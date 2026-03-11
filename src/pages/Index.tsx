@@ -40,15 +40,15 @@ const Index = () => {
               <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-accent/10 blur-2xl" />
               <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
 
-              <div className="relative overflow-hidden rounded-3xl hero-image-glow">
+              <div className="relative">
                 <img
                   src={profilePhoto}
                   alt="Financial advisor profile"
                   className="relative w-full h-[360px] md:h-[500px] lg:h-[560px] object-cover"
                   loading="eager"
                 />
-                {/* Bottom gradient fade */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/60 to-transparent" />
+                {/* Bottom gradient fade — blends into background */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/70 to-transparent" />
               </div>
             </div>
 

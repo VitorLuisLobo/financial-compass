@@ -1,160 +1,242 @@
 import { useState } from "react";
-import { Search, BookOpen, ChevronRight, TrendingUp, Landmark, PiggyBank, BarChart3, Shield, DollarSign } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
+import { Search, BookOpen, ChevronRight, TrendingUp, Landmark, PiggyBank, BarChart3, Shield, DollarSign, ArrowLeft, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import SEOHead from "@/components/SEOHead";
+import { libraryData, findArticle } from "@/data/content";
+import type { LibraryCategory, LibraryTopic } from "@/data/content";
 
-interface Topic {
-  title: string;
-  content: string;
-}
-
-interface Category {
-  name: string;
-  icon: React.ElementType;
-  description: string;
-  topics: Topic[];
-}
-
-const libraryData: Category[] = [
-  {
-    name: "Investing Basics",
-    icon: TrendingUp,
-    description: "Core concepts every investor needs to understand.",
-    topics: [
-      { title: "What is CDI?", content: "CDI (Certificado de Depósito Interbancário) is the benchmark interest rate for interbank lending in Brazil. It closely follows the Selic rate and is the most common reference for fixed income investments. When an investment yields '100% of CDI,' it means the return matches the interbank rate. Understanding CDI is essential for evaluating any fixed income product in the Brazilian market." },
-      { title: "What is Selic?", content: "The Selic rate is Brazil's base interest rate, set by the Central Bank's monetary policy committee (COPOM). It influences all other interest rates in the economy, from savings accounts to business loans. When the Selic rises, fixed income becomes more attractive; when it falls, investors often look toward equities for better returns." },
-      { title: "Inflation Explained", content: "Inflation is the rate at which the general price level of goods and services rises over time. It erodes purchasing power, meaning your money buys less over time. In Brazil, inflation is primarily measured by the IPCA index. Investments should ideally outpace inflation to generate real returns and preserve wealth." },
-      { title: "Risk vs Return", content: "The relationship between risk and return is fundamental to investing. Higher potential returns generally come with higher risk. Understanding your risk tolerance and investment horizon helps you choose the right mix of assets. Diversification across asset classes helps manage risk without sacrificing too much potential return." },
-    ],
-  },
-  {
-    name: "Financial Products",
-    icon: Landmark,
-    description: "Understanding different investment instruments.",
-    topics: [
-      { title: "CDB (Bank Deposit Certificate)", content: "CDB is a fixed income security issued by banks. When you buy a CDB, you're essentially lending money to the bank in exchange for interest. CDBs can be prefixed (fixed rate), post-fixed (linked to CDI), or inflation-linked. They are covered by the FGC (credit guarantee fund) up to R$250,000 per institution." },
-      { title: "LCI (Real Estate Credit Letter)", content: "LCI is a fixed income security backed by real estate loans. Its main advantage is tax exemption for individual investors — you don't pay income tax on the returns. This makes LCI particularly attractive when comparing net returns with taxable alternatives like CDBs." },
-      { title: "Treasury Bonds", content: "Treasury bonds (Tesouro Direto) are government securities, considered the safest investments in Brazil. Options include Tesouro Selic (post-fixed), Tesouro Prefixado (fixed rate), and Tesouro IPCA+ (inflation-linked). They're ideal for building an emergency fund or long-term wealth with minimal risk." },
-      { title: "ETFs (Exchange-Traded Funds)", content: "ETFs are funds that track an index and trade on the stock exchange like regular stocks. They offer instant diversification at low cost. Popular examples include BOVA11 (tracks Ibovespa) and IVVB11 (tracks S&P 500). ETFs are excellent for passive investors seeking broad market exposure." },
-    ],
-  },
-  {
-    name: "Financial Organization",
-    icon: PiggyBank,
-    description: "Building the foundation for financial success.",
-    topics: [
-      { title: "Emergency Fund", content: "An emergency fund is money set aside for unexpected expenses like medical bills, car repairs, or job loss. Financial experts recommend saving 3-6 months of essential expenses. Keep this fund in highly liquid, low-risk investments like Tesouro Selic or a high-yield savings account. Building an emergency fund should be your first financial priority." },
-      { title: "Budget Planning", content: "A budget is your plan for how to allocate income across expenses, savings, and investments. The 50-30-20 rule is a popular starting point: 50% for needs, 30% for wants, and 20% for savings and investments. Track your spending for a month to understand where your money goes, then create a budget that aligns with your financial goals." },
-      { title: "Saving Strategies", content: "Effective saving starts with paying yourself first — automate transfers to savings and investment accounts right after receiving your income. Use specific savings goals (emergency fund, vacation, down payment) to stay motivated. Consider using separate accounts for different goals and take advantage of automatic investment platforms." },
-    ],
-  },
-  {
-    name: "Market Analysis",
-    icon: BarChart3,
-    description: "Understanding market dynamics and indicators.",
-    topics: [
-      { title: "Reading Financial Statements", content: "Financial statements are the backbone of fundamental analysis. The three key statements are the income statement (profitability), balance sheet (financial position), and cash flow statement (money movement). Key metrics include P/E ratio, debt-to-equity ratio, and return on equity. Learning to read these documents helps you make informed investment decisions." },
-      { title: "Technical vs Fundamental Analysis", content: "Fundamental analysis evaluates a company's intrinsic value through financial statements, industry position, and economic factors. Technical analysis studies price patterns and trading volume to predict future movements. Most successful investors use a combination of both approaches, with fundamentals for stock selection and technicals for timing." },
-    ],
-  },
-  {
-    name: "Risk Management",
-    icon: Shield,
-    description: "Protecting your portfolio and managing downside.",
-    topics: [
-      { title: "Portfolio Diversification", content: "Diversification spreads risk across different asset classes, sectors, and geographies. A well-diversified portfolio might include stocks, bonds, real estate, and international exposure. The goal isn't to eliminate risk entirely but to reduce the impact of any single investment's poor performance on your overall portfolio." },
-      { title: "Understanding Volatility", content: "Volatility measures how much an investment's price fluctuates over time. Higher volatility means larger price swings, both up and down. While volatility is often associated with risk, it also creates opportunities. Long-term investors should expect and accept short-term volatility as the cost of potentially higher returns." },
-    ],
-  },
-  {
-    name: "Tax & Planning",
-    icon: DollarSign,
-    description: "Optimizing your finances through tax efficiency.",
-    topics: [
-      { title: "Investment Taxation", content: "Understanding how investments are taxed is crucial for maximizing after-tax returns. In Brazil, fixed income follows a regressive tax table (from 22.5% to 15% based on holding period). Stock market gains up to R$20,000/month are tax-exempt for individuals. Some products like LCI, LCA, and CRI are tax-free. Always compare investments on an after-tax basis." },
-      { title: "Retirement Planning", content: "Planning for retirement requires estimating future expenses, understanding how much to save, and choosing the right investment vehicles. Private pension plans (PGBL and VGBL) offer tax advantages in Brazil. Start early to benefit from compound interest — even small monthly contributions can grow significantly over decades." },
-    ],
-  },
-];
+const iconMap: Record<string, React.ElementType> = {
+  TrendingUp, Landmark, PiggyBank, BarChart3, Shield, DollarSign,
+};
 
 const Library = () => {
+  const { categorySlug, topicSlug } = useParams<{ categorySlug?: string; topicSlug?: string }>();
   const [search, setSearch] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState<{ category: string; topic: Topic } | null>(null);
 
+  // Topic detail view
+  if (categorySlug && topicSlug) {
+    const cat = libraryData.find((c) => c.slug === categorySlug);
+    const topic = cat?.topics.find((t) => t.slug === topicSlug);
+
+    if (!cat || !topic) {
+      return (
+        <div className="container py-20 text-center">
+          <h1 className="font-display text-3xl text-foreground">Topic not found</h1>
+          <Link to="/library" className="mt-4 inline-block text-accent hover:underline">← Back to library</Link>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <SEOHead title={`${topic.title} — Financial Library`} description={topic.content.slice(0, 155)} />
+        <div className="container py-16">
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+              <li><Link to="/" className="hover:text-accent">Home</Link></li>
+              <li>/</li>
+              <li><Link to="/library" className="hover:text-accent">Library</Link></li>
+              <li>/</li>
+              <li><Link to={`/library/${cat.slug}`} className="hover:text-accent">{cat.name}</Link></li>
+              <li>/</li>
+              <li className="text-foreground">{topic.title}</li>
+            </ol>
+          </nav>
+
+          <Link to={`/library/${cat.slug}`} className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+            <ArrowLeft className="h-3.5 w-3.5" /> Back to {cat.name}
+          </Link>
+
+          <article className="mt-4 rounded-lg border border-border bg-card p-8">
+            <span className="text-xs font-medium text-accent">{cat.name}</span>
+            <h1 className="mt-2 font-display text-3xl text-foreground md:text-4xl">{topic.title}</h1>
+            <p className="mt-6 leading-relaxed text-muted-foreground">{topic.content}</p>
+          </article>
+
+          {/* Related Blog Articles */}
+          {topic.relatedArticles.length > 0 && (
+            <aside className="mt-8 rounded-lg border border-accent/20 bg-accent/5 p-6">
+              <h2 className="font-display text-lg text-foreground">Related Articles</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Read more about this topic on the blog.</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {topic.relatedArticles.map((articleSlug) => {
+                  const article = findArticle(articleSlug);
+                  if (!article) return null;
+                  return (
+                    <Link
+                      key={articleSlug}
+                      to={`/blog/${articleSlug}`}
+                      className="flex items-start gap-3 rounded-md border border-border bg-card p-4 transition-all hover:border-accent/30 hover:shadow-sm"
+                    >
+                      <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      <div>
+                        <p className="text-sm font-medium text-foreground">{article.title}</p>
+                        <p className="mt-0.5 text-xs text-muted-foreground">{article.category} · {article.readTime}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </aside>
+          )}
+
+          {/* Other topics in same category */}
+          <section className="mt-8">
+            <h2 className="font-display text-lg text-foreground">More in {cat.name}</h2>
+            <div className="mt-3 space-y-1">
+              {cat.topics.filter((t) => t.slug !== topic.slug).map((t) => (
+                <Link
+                  key={t.slug}
+                  to={`/library/${cat.slug}/${t.slug}`}
+                  className="flex items-center justify-between rounded-md border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors hover:border-accent/30 hover:shadow-sm"
+                >
+                  <span className="flex items-center gap-2">
+                    <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+                    {t.title}
+                  </span>
+                  <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  // Category view
+  if (categorySlug) {
+    const cat = libraryData.find((c) => c.slug === categorySlug);
+    if (!cat) {
+      return (
+        <div className="container py-20 text-center">
+          <h1 className="font-display text-3xl text-foreground">Category not found</h1>
+          <Link to="/library" className="mt-4 inline-block text-accent hover:underline">← Back to library</Link>
+        </div>
+      );
+    }
+
+    const CatIcon = iconMap[cat.icon] || BookOpen;
+
+    return (
+      <div>
+        <SEOHead title={`${cat.name} — Financial Library`} description={cat.description} />
+        <div className="container py-16">
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <li><Link to="/" className="hover:text-accent">Home</Link></li>
+              <li>/</li>
+              <li><Link to="/library" className="hover:text-accent">Library</Link></li>
+              <li>/</li>
+              <li className="text-foreground">{cat.name}</li>
+            </ol>
+          </nav>
+
+          <Link to="/library" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+            <ArrowLeft className="h-3.5 w-3.5" /> All categories
+          </Link>
+
+          <div className="mt-4 flex items-center gap-3">
+            <CatIcon className="h-8 w-8 text-accent" />
+            <div>
+              <h1 className="font-display text-3xl text-foreground md:text-4xl">{cat.name}</h1>
+              <p className="mt-1 text-muted-foreground">{cat.description}</p>
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-2">
+            {cat.topics.map((topic) => (
+              <Link
+                key={topic.slug}
+                to={`/library/${cat.slug}/${topic.slug}`}
+                className="group flex items-center justify-between rounded-lg border border-border bg-card p-5 transition-all hover:border-accent/30 hover:shadow-md"
+              >
+                <div>
+                  <h2 className="font-display text-lg text-foreground group-hover:text-accent transition-colors">{topic.title}</h2>
+                  <p className="mt-1 text-sm text-muted-foreground line-clamp-1">{topic.content.slice(0, 100)}...</p>
+                  {topic.relatedArticles.length > 0 && (
+                    <p className="mt-2 text-xs text-accent">{topic.relatedArticles.length} related article{topic.relatedArticles.length > 1 ? "s" : ""}</p>
+                  )}
+                </div>
+                <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-accent transition-colors" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Library index
   const filteredCategories = libraryData
     .map((cat) => ({
       ...cat,
       topics: cat.topics.filter(
-        (t) =>
-          t.title.toLowerCase().includes(search.toLowerCase()) ||
-          t.content.toLowerCase().includes(search.toLowerCase())
+        (t) => t.title.toLowerCase().includes(search.toLowerCase()) || t.content.toLowerCase().includes(search.toLowerCase())
       ),
     }))
     .filter((cat) => cat.topics.length > 0);
 
   return (
-    <div className="container py-16">
-      <div className="animate-fade-up">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">Knowledge Base</p>
-        <h1 className="mt-2 font-display text-4xl text-foreground md:text-5xl">Financial Library</h1>
-        <p className="mt-3 max-w-xl text-muted-foreground">
-          A structured repository of financial knowledge organized by topics, not dates.
-        </p>
-      </div>
+    <div>
+      <SEOHead title="Financial Library" description="A structured repository of financial knowledge organized by topics. Learn about investing, financial products, budgeting, and more." />
 
-      {/* Search */}
-      <div className="relative mt-8 max-w-md">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <Input placeholder="Search the library..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
-      </div>
+      <div className="container py-16">
+        <header className="animate-fade-up">
+          <nav aria-label="Breadcrumb" className="mb-4">
+            <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <li><Link to="/" className="hover:text-accent">Home</Link></li>
+              <li>/</li>
+              <li className="text-foreground">Library</li>
+            </ol>
+          </nav>
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent">Knowledge Base</p>
+          <h1 className="mt-2 font-display text-4xl text-foreground md:text-5xl">Financial Library</h1>
+          <p className="mt-3 max-w-xl text-muted-foreground">
+            A structured repository of financial knowledge organized by topics, not dates.
+          </p>
+        </header>
 
-      {/* Selected Topic View */}
-      {selectedTopic && (
-        <div className="mt-8 animate-fade-in rounded-lg border border-accent/20 bg-card p-8">
-          <button
-            onClick={() => setSelectedTopic(null)}
-            className="mb-4 text-sm font-medium text-accent hover:underline"
-          >
-            ← Back to library
-          </button>
-          <span className="text-xs font-medium text-accent">{selectedTopic.category}</span>
-          <h2 className="mt-1 font-display text-2xl text-foreground">{selectedTopic.topic.title}</h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">{selectedTopic.topic.content}</p>
+        <div className="relative mt-8 max-w-md">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input placeholder="Search the library..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
         </div>
-      )}
 
-      {/* Categories Grid */}
-      {!selectedTopic && (
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredCategories.map((cat, i) => (
-            <div key={i} className="rounded-lg border border-border bg-card p-6">
-              <div className="flex items-center gap-3">
-                <cat.icon className="h-6 w-6 text-accent" />
-                <h3 className="font-display text-lg text-foreground">{cat.name}</h3>
-              </div>
-              <p className="mt-2 text-sm text-muted-foreground">{cat.description}</p>
-              <div className="mt-4 space-y-1">
-                {cat.topics.map((topic, j) => (
-                  <button
-                    key={j}
-                    onClick={() => setSelectedTopic({ category: cat.name, topic })}
-                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-secondary"
-                  >
-                    <span className="flex items-center gap-2">
-                      <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-                      {topic.title}
-                    </span>
-                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+          {filteredCategories.map((cat) => {
+            const CatIcon = iconMap[cat.icon] || BookOpen;
+            return (
+              <section key={cat.slug} className="rounded-lg border border-border bg-card p-6">
+                <Link to={`/library/${cat.slug}`} className="flex items-center gap-3 group">
+                  <CatIcon className="h-6 w-6 text-accent" />
+                  <h2 className="font-display text-lg text-foreground group-hover:text-accent transition-colors">{cat.name}</h2>
+                </Link>
+                <p className="mt-2 text-sm text-muted-foreground">{cat.description}</p>
+                <div className="mt-4 space-y-1">
+                  {cat.topics.map((topic) => (
+                    <Link
+                      key={topic.slug}
+                      to={`/library/${cat.slug}/${topic.slug}`}
+                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-secondary"
+                    >
+                      <span className="flex items-center gap-2">
+                        <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+                        {topic.title}
+                      </span>
+                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
-      )}
 
-      {!selectedTopic && filteredCategories.length === 0 && (
-        <p className="mt-12 text-center text-muted-foreground">No topics found. Try a different search term.</p>
-      )}
+        {filteredCategories.length === 0 && (
+          <p className="mt-12 text-center text-muted-foreground">No topics found. Try a different search term.</p>
+        )}
+      </div>
     </div>
   );
 };

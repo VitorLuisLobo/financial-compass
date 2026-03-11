@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
+import ArticlePage from "./pages/ArticlePage";
 import Library from "./pages/Library";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
@@ -28,7 +29,10 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<ArticlePage />} />
               <Route path="/library" element={<Library />} />
+              <Route path="/library/:categorySlug" element={<Library />} />
+              <Route path="/library/:categorySlug/:topicSlug" element={<Library />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />

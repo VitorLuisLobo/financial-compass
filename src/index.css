@@ -155,6 +155,7 @@
   .stat-pill {
     @apply rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm px-5 py-3 text-center;
   }
+}
 
 
 @layer utilities {

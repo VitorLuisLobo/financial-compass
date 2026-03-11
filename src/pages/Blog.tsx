@@ -26,11 +26,11 @@ const Blog = () => {
         description={activeCatInfo?.description || "Practical perspectives on investing, personal finance, and building long-term wealth."}
       />
 
-      <div className="container py-16">
+      <div className="container py-16 md:py-20">
         <header className="animate-fade-up">
           <nav aria-label="Breadcrumb" className="mb-4">
             <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <li><Link to="/" className="hover:text-accent">Home</Link></li>
+              <li><Link to="/" className="hover:text-accent transition-colors">Home</Link></li>
               <li>/</li>
               <li className="text-foreground">Blog</li>
               {activeCategory !== "All" && (
@@ -41,8 +41,8 @@ const Blog = () => {
               )}
             </ol>
           </nav>
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">Blog</p>
-          <h1 className="mt-2 font-display text-4xl text-foreground md:text-5xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">Blog</span>
+          <h1 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
             {activeCategory !== "All" ? activeCategory : "Articles & Insights"}
           </h1>
           <p className="mt-3 max-w-xl text-muted-foreground">
@@ -51,18 +51,20 @@ const Blog = () => {
         </header>
 
         {/* Search & Filters */}
-        <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="relative max-w-sm flex-1">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
+            <Input placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 rounded-xl" />
           </div>
           <div className="flex flex-wrap gap-2">
             {["All", ...blogCategories.map((c) => c.name)].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                  activeCategory === cat ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat
+                    ? "bg-accent text-accent-foreground shadow-md shadow-accent/25"
+                    : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
                 }`}
               >
                 {cat}
@@ -71,21 +73,22 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Category Cards (when All is selected) */}
+        {/* Category Cards */}
         {activeCategory === "All" && !search && (
-          <section className="mt-10" aria-label="Blog categories">
-            <h2 className="mb-4 font-display text-xl text-foreground">Explore by Category</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {blogCategories.map((cat) => (
+          <section className="mt-12" aria-label="Blog categories">
+            <h2 className="mb-6 font-display text-xl text-foreground">Explore by Category</h2>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {blogCategories.map((cat, i) => (
                 <button
                   key={cat.slug}
                   onClick={() => setActiveCategory(cat.name)}
-                  className="group rounded-lg border border-border bg-card p-5 text-left transition-all hover:border-accent/30 hover:shadow-md"
+                  className={`card-hover group p-6 text-left opacity-0 animate-fade-up animation-delay-${(i + 1) * 100}`}
+                  style={{ animationFillMode: 'forwards' }}
                 >
-                  <h3 className="font-display text-lg text-foreground group-hover:text-accent transition-colors">{cat.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{cat.description}</p>
-                  <span className="mt-3 inline-flex items-center text-xs font-medium text-accent">
-                    {cat.count} articles <ArrowRight className="ml-1 h-3 w-3" />
+                  <h3 className="font-display text-lg text-foreground group-hover:text-accent transition-colors duration-300">{cat.name}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{cat.description}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent">
+                    {cat.count} articles <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </button>
               ))}
@@ -94,12 +97,12 @@ const Blog = () => {
         )}
 
         {/* Articles Grid */}
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((article) => (
-            <article key={article.slug} className="group flex flex-col rounded-lg border border-border bg-card p-6 transition-all hover:border-accent/30 hover:shadow-md">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((article, i) => (
+            <article key={article.slug} className={`card-hover group flex flex-col p-6 opacity-0 animate-fade-up animation-delay-${((i % 3) + 1) * 100}`} style={{ animationFillMode: 'forwards' }}>
               <Link to={`/blog/${article.slug}`} className="flex flex-col flex-1">
-                <span className="text-xs font-medium text-accent">{article.category}</span>
-                <h3 className="mt-2 font-display text-lg text-foreground group-hover:text-accent transition-colors">{article.title}</h3>
+                <span className="inline-flex w-fit rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">{article.category}</span>
+                <h3 className="mt-3 font-display text-lg text-foreground group-hover:text-accent transition-colors duration-300">{article.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-muted-foreground">{article.excerpt}</p>
                 <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
                   <time>{article.date}</time>
@@ -107,10 +110,9 @@ const Blog = () => {
                   <span>{article.readTime} read</span>
                 </div>
               </Link>
-              {/* Related library links */}
               {article.relatedLibraryTopics.length > 0 && (
-                <div className="mt-3 border-t border-border pt-3">
-                  <p className="mb-1.5 text-xs font-medium text-muted-foreground">Learn more in the Library:</p>
+                <div className="mt-4 border-t border-border pt-4">
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">Learn more in the Library:</p>
                   <div className="flex flex-wrap gap-1.5">
                     {article.relatedLibraryTopics.slice(0, 2).map((topicSlug) => {
                       const found = findLibraryTopic(topicSlug);
@@ -119,7 +121,7 @@ const Blog = () => {
                         <Link
                           key={topicSlug}
                           to={`/library/${found.category.slug}/${topicSlug}`}
-                          className="inline-flex items-center gap-1 rounded-md bg-secondary px-2 py-1 text-xs text-muted-foreground transition-colors hover:text-accent"
+                          className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2.5 py-1.5 text-xs text-muted-foreground transition-all duration-300 hover:text-accent hover:bg-accent/10"
                         >
                           <BookOpen className="h-3 w-3" />
                           {found.topic.title}
@@ -134,7 +136,7 @@ const Blog = () => {
         </div>
 
         {filtered.length === 0 && (
-          <p className="mt-12 text-center text-muted-foreground">No articles found. Try a different search or category.</p>
+          <p className="mt-16 text-center text-muted-foreground">No articles found. Try a different search or category.</p>
         )}
       </div>
     </div>

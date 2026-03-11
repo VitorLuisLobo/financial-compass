@@ -27,70 +27,78 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        {/* Background decorations */}
         <div className="absolute inset-0 dot-pattern opacity-40" />
         <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
         <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
 
-        <div className="container relative py-20 md:py-32">
-          <div className="flex flex-col items-center text-center">
-            {/* Profile photo with animated ring */}
-            <div className="relative mb-8 animate-fade-up">
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary via-accent to-primary animate-spin-slow opacity-70 blur-sm" />
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary via-accent to-primary animate-spin-slow" />
-              <img
-                src={profilePhoto}
-                alt="Financial advisor profile"
-                className="relative h-36 w-36 rounded-full object-cover border-4 border-background md:h-44 md:w-44"
-                loading="eager"
-              />
+        <div className="container relative py-16 md:py-24 lg:py-32">
+          <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-12 lg:gap-16">
+            {/* Left — Photo */}
+            <div className="relative w-full max-w-sm md:w-1/2 md:max-w-none animate-fade-up">
+              {/* Decorative blobs behind photo */}
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-accent/20 via-primary/10 to-accent/5 blur-2xl" />
+              <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-accent/10 blur-2xl" />
+              <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
+
+              <div className="relative overflow-hidden rounded-3xl hero-image-glow">
+                <img
+                  src={profilePhoto}
+                  alt="Financial advisor profile"
+                  className="relative w-full h-[360px] md:h-[500px] lg:h-[560px] object-cover"
+                  loading="eager"
+                />
+                {/* Bottom gradient fade */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/60 to-transparent" />
+              </div>
             </div>
 
-            {/* Badge */}
-            <div className="animate-fade-up animation-delay-100">
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent backdrop-blur-sm">
-                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                Financial Advisor & Educator
-              </span>
-            </div>
+            {/* Right — Content */}
+            <div className="flex flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
+              {/* Badge */}
+              <div className="animate-fade-up animation-delay-100">
+                <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent backdrop-blur-sm">
+                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                  Financial Advisor & Educator
+                </span>
+              </div>
 
-            {/* Headline */}
-            <h1 className="mt-6 font-display text-4xl leading-tight text-foreground md:text-6xl lg:text-7xl animate-fade-up animation-delay-200">
-              Invest with clarity,
-              <br />
-              <span className="gradient-text">grow with confidence.</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-lg text-muted-foreground animate-fade-up animation-delay-300">
-              Investment advisor sharing insights on finance, investing and financial education. Building knowledge that lasts.
-            </p>
+              <h1 className="mt-6 font-display text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl animate-fade-up animation-delay-200">
+                Invest with clarity,
+                <br />
+                <span className="gradient-text">grow with confidence.</span>
+              </h1>
+              <p className="mt-5 max-w-lg text-lg text-muted-foreground animate-fade-up animation-delay-300">
+                Investment advisor sharing insights on finance, investing and financial education. Building knowledge that lasts.
+              </p>
 
-            {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-up animation-delay-400">
-              <Button variant="gradient" size="lg" asChild className="group">
-                <Link to="/blog">
-                  Read articles
-                  <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button variant="hero-outline" size="lg" asChild className="group">
-                <Link to="/library">
-                  Explore financial library
-                  <ArrowRight className="ml-1 h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </div>
+              {/* CTA Buttons */}
+              <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start animate-fade-up animation-delay-400">
+                <Button variant="gradient" size="lg" asChild className="group">
+                  <Link to="/blog">
+                    Read articles
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+                <Button variant="hero-outline" size="lg" asChild className="group">
+                  <Link to="/library">
+                    Explore financial library
+                    <ArrowRight className="ml-1 h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
 
-            {/* Stats */}
-            <div className="mt-14 flex flex-wrap justify-center gap-4 animate-fade-up animation-delay-500">
-              {stats.map((stat) => (
-                <div key={stat.label} className="stat-pill flex items-center gap-3">
-                  <stat.icon className="h-5 w-5 text-accent" />
-                  <div className="text-left">
-                    <p className="text-lg font-bold text-foreground">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+              {/* Stats */}
+              <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start animate-fade-up animation-delay-500">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="stat-pill flex items-center gap-3">
+                    <stat.icon className="h-5 w-5 text-accent" />
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-foreground">{stat.value}</p>
+                      <p className="text-xs text-muted-foreground">{stat.label}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Wallet, TrendingUp, BookOpen, Users, Award } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";

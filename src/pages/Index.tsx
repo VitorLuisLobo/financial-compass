@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Wallet, TrendingUp, BookOpen, Users, Award } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import SEOHead from "@/components/SEOHead";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 import { allArticles, blogCategories, libraryData } from "@/data/content";
 
 const featuredGuides = [

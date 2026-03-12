@@ -44,11 +44,11 @@ const Index = () => {
                 <img
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[360px] md:h-[500px] lg:h-[560px] object-cover"
+                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl"
                   loading="eager"
                 />
-                {/* Bottom gradient fade — blends into background */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/70 to-transparent" />
+                {/* Bottom gradient fade — subtle blend */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
               </div>
             </div>
 

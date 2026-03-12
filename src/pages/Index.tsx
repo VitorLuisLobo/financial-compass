@@ -53,11 +53,12 @@ const Index = () => {
               <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-accent/10 blur-2xl" />
               <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
 
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
+                  ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl"
+                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl will-change-transform"
                   loading="eager"
                 />
                 {/* Bottom gradient fade — subtle blend */}

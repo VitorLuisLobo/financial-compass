@@ -52,17 +52,19 @@ const Index = () => {
               <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-accent/8 blur-3xl" />
               <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-primary/6 blur-2xl" />
 
-              <div className="relative">
+              <div className="relative mt-8 md:mt-12">
                 <img
                   ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[380px] md:h-[480px] lg:h-[540px] object-contain will-change-transform"
-                  style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))' }}
+                  className="relative w-full h-[420px] md:h-[540px] lg:h-[600px] object-contain will-change-transform"
+                  style={{
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
+                    maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+                  }}
                   loading="eager"
                 />
-                {/* Bottom gradient fade for smooth integration */}
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
               </div>
             </div>
 

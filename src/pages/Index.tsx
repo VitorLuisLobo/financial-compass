@@ -62,7 +62,7 @@ const Index = () => {
                   loading="eager"
                 />
                 {/* Bottom gradient fade for smooth integration */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
               </div>
             </div>
 

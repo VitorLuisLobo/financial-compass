@@ -7,6 +7,7 @@ const navItems = [
   { label: "About", path: "/about" },
   { label: "Blog", path: "/blog" },
   { label: "Financial Library", path: "/library" },
+  { label: "Learning Paths", path: "/learning-paths" },
   { label: "Projects", path: "/projects" },
   { label: "Contact", path: "/contact" },
 ];
@@ -36,7 +37,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-0.5 md:flex">
+        <nav className="hidden items-center gap-0.5 lg:flex">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path || 
               (item.path !== "/" && location.pathname.startsWith(item.path));
@@ -44,7 +45,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent/10 ${
+                className={`relative rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent/10 ${
                   isActive
                     ? "text-accent"
                     : "text-muted-foreground hover:text-foreground"
@@ -61,7 +62,7 @@ const Header = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground hover:text-accent transition-colors"
+          className="lg:hidden text-foreground hover:text-accent transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -71,7 +72,7 @@ const Header = () => {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <nav className="border-t border-border/50 glass px-4 pb-4 md:hidden animate-fade-in">
+        <nav className="border-t border-border/50 glass px-4 pb-4 lg:hidden animate-fade-in">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path ||
               (item.path !== "/" && location.pathname.startsWith(item.path));
@@ -83,7 +84,7 @@ const Header = () => {
                 className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                   isActive
                     ? "text-accent bg-accent/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 {item.label}

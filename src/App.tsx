@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import ArticlePage from "./pages/ArticlePage";
 import Library from "./pages/Library";
+import LearningPaths from "./pages/LearningPaths";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/library" element={<Library />} />
               <Route path="/library/:categorySlug" element={<Library />} />
               <Route path="/library/:categorySlug/:topicSlug" element={<Library />} />
+              <Route path="/learning-paths" element={<LearningPaths />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />

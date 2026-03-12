@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Mail, Youtube, Twitter } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Mail } from "lucide-react";
 
 const Footer = () => (
   <footer className="relative overflow-hidden bg-primary text-primary-foreground">
-    {/* Subtle gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent/20" />
 
     <div className="container relative py-14">
@@ -17,13 +16,20 @@ const Footer = () => (
         <div>
           <h4 className="mb-4 text-sm font-semibold text-primary-foreground/90">Navigation</h4>
           <div className="flex flex-col gap-2.5">
-            {["About", "Blog", "Financial Library", "Projects", "Contact"].map((item) => (
+            {[
+              { label: "Home", path: "/" },
+              { label: "Blog", path: "/blog" },
+              { label: "Financial Library", path: "/library" },
+              { label: "Learning Paths", path: "/learning-paths" },
+              { label: "Projects", path: "/projects" },
+              { label: "Contact", path: "/contact" },
+            ].map((item) => (
               <Link
-                key={item}
-                to={`/${item.toLowerCase().replace(" ", "-").replace("financial-", "")}`}
+                key={item.path}
+                to={item.path}
                 className="text-sm text-primary-foreground/60 transition-colors duration-300 hover:text-accent"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>
@@ -43,7 +49,7 @@ const Footer = () => (
           <div className="flex gap-3">
             {[
               { icon: Linkedin, href: "#" },
-              { icon: Twitter, href: "#" },
+              { icon: Instagram, href: "#" },
               { icon: Youtube, href: "#" },
               { icon: Mail, href: "mailto:contact@financehub.com" },
             ].map(({ icon: Icon, href }, i) => (

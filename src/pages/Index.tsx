@@ -47,22 +47,22 @@ const Index = () => {
         <div className="container relative py-16 md:py-24 lg:py-32">
           <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-12 lg:gap-16">
             {/* Left — Photo */}
-            <div className="relative w-full max-w-sm md:w-1/2 md:max-w-none animate-fade-up">
+            <div className="relative flex items-center justify-center w-full max-w-sm md:w-1/2 md:max-w-none animate-fade-up">
               {/* Decorative blobs behind photo */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-accent/20 via-primary/10 to-accent/5 blur-2xl" />
-              <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-accent/10 blur-2xl" />
-              <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
+              <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-accent/8 blur-3xl" />
+              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-primary/6 blur-2xl" />
 
-              <div className="relative overflow-hidden">
+              <div className="relative">
                 <img
                   ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl will-change-transform"
+                  className="relative w-full h-[380px] md:h-[480px] lg:h-[540px] object-contain will-change-transform"
+                  style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))' }}
                   loading="eager"
                 />
-                {/* Bottom gradient fade — subtle blend */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+                {/* Bottom gradient fade for smooth integration */}
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
             </div>
 

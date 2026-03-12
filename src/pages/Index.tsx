@@ -21,6 +21,18 @@ const stats = [
 
 const Index = () => {
   const recentArticles = allArticles.slice(0, 3);
+  const heroImageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroImageRef.current) {
+        const scrollY = window.scrollY;
+        heroImageRef.current.style.transform = `translateY(${scrollY * 0.15}px)`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div>

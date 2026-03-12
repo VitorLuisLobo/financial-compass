@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Wallet, TrendingUp, BookOpen, Users, Award } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
@@ -20,6 +21,18 @@ const stats = [
 
 const Index = () => {
   const recentArticles = allArticles.slice(0, 3);
+  const heroImageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroImageRef.current) {
+        const scrollY = window.scrollY;
+        heroImageRef.current.style.transform = `translateY(${scrollY * 0.15}px)`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div>
@@ -40,11 +53,12 @@ const Index = () => {
               <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-accent/10 blur-2xl" />
               <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
 
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
+                  ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl"
+                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain drop-shadow-2xl will-change-transform"
                   loading="eager"
                 />
                 {/* Bottom gradient fade — subtle blend */}

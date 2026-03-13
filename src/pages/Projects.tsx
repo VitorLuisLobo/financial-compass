@@ -72,7 +72,7 @@ const Projects = () => (
               </span>
             ))}
           </div>
-          <Button variant="ghost" className="mt-5 gap-1.5 px-0 text-accent hover:text-accent/80 group/btn">
+          <Button variant="link" className="mt-5 gap-1.5 px-0 text-primary hover:text-primary/80 group/btn">
             View project <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
           </Button>
         </div>

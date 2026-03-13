@@ -63,7 +63,7 @@ const Blog = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
-                    ? "bg-accent text-accent-foreground shadow-md shadow-accent/25"
+                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
                     : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
                 }`}
               >

@@ -1,5 +1,5 @@
 import { Award, BookOpen, Briefcase, Target } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const milestones = [
   { year: "2012", title: "Started in Financial Markets", description: "Began career as a junior analyst at a major investment firm." },

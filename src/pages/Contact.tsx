@@ -29,8 +29,8 @@ const Contact = () => {
         {/* Contact Methods */}
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {[
-            { icon: Mail, label: "Email", value: "contact@financehub.com", href: "mailto:contact@financehub.com" },
-            { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/financehub", href: "#" },
+            { icon: Mail, label: "Email", value: "contact@finance...", href: "mailto:contact@financehub.com" },
+            { icon: Linkedin, label: "LinkedIn", value: "/financehub", href: "#" },
             { icon: MessageCircle, label: "WhatsApp", value: "Send a message", href: "#" },
           ].map(({ icon: Icon, label, value, href }, i) => (
             <a

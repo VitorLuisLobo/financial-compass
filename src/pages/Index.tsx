@@ -92,7 +92,7 @@ const Index = () => {
                   alt="Financial advisor profile"
                   className="relative w-full h-[380px] md:h-[500px] lg:h-[560px] object-contain will-change-transform"
                   style={{
-                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.12))',
+                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.4))',
                     maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
                   }}

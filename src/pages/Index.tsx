@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Wallet, TrendingUp, BookOpen, Users, Award, GraduationCap, LineChart, FileSpreadsheet, Briefcase, CheckCircle2 } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import SEOHead from "@/components/SEOHead";
+import ScrollReveal from "@/components/ScrollReveal";
 import profilePhoto from "@/assets/profile-photo.png";
 import { allArticles, blogCategories, libraryData } from "@/data/content";
 

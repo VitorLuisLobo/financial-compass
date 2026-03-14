@@ -63,30 +63,37 @@ const Index = () => {
       <SEOHead title="Home" description="Investment advisor sharing insights on finance, investing and financial education. Build knowledge that lasts." />
 
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Background effects */}
-        <div className="absolute inset-0 dot-pattern opacity-30" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[80%] bg-gradient-to-b from-primary/[0.04] via-accent/[0.03] to-transparent rounded-b-[50%]" />
-        <div className="absolute -top-60 -right-60 h-[500px] w-[500px] rounded-full bg-accent/[0.07] blur-[100px]" />
-        <div className="absolute -bottom-60 -left-60 h-[500px] w-[500px] rounded-full bg-primary/[0.07] blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-secondary/[0.03] blur-[120px]" />
+      <section className="relative overflow-hidden min-h-[92vh] flex items-center">
+        {/* Layered background */}
+        <div className="absolute inset-0 hero-mesh" />
+        <div className="absolute inset-0 grid-pattern" />
+        
+        {/* Floating orbs */}
+        <div className="absolute top-[15%] right-[10%] h-[400px] w-[400px] hero-orb bg-accent/[0.08]" />
+        <div className="absolute bottom-[10%] left-[5%] h-[350px] w-[350px] hero-orb hero-orb-2 bg-secondary/[0.06]" />
+        <div className="absolute top-[40%] left-[40%] h-[300px] w-[300px] hero-orb bg-primary/[0.05]" style={{ animationDelay: '-2s', animationDuration: '12s' }} />
 
-        <div className="container relative py-20 md:py-28 lg:py-36">
-          <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-14 lg:gap-20">
+        {/* Radial center spotlight */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-accent/[0.05] via-transparent to-transparent rounded-full blur-3xl" />
+
+        <div className="container relative py-20 md:py-28 lg:py-32">
+          <div className="flex flex-col items-center gap-14 md:flex-row md:items-center md:gap-16 lg:gap-24">
             {/* Left — Photo */}
-            <div className="relative flex items-center justify-center w-full max-w-sm md:w-[45%] md:max-w-none opacity-0 animate-fade-up">
-              <div className="absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-accent/10 blur-[80px]" />
-              <div className="absolute -top-8 -left-8 h-40 w-40 rounded-full bg-primary/8 blur-[60px]" />
-              <div className="relative mt-8 md:mt-0">
+            <div className="relative flex items-center justify-center w-full max-w-xs md:w-[40%] md:max-w-none opacity-0 animate-fade-up">
+              {/* Glow behind photo */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-[70%] w-[70%] rounded-full bg-gradient-to-br from-accent/15 via-secondary/10 to-primary/10 blur-[60px]" />
+              </div>
+              <div className="relative">
                 <img
                   ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain will-change-transform"
+                  className="relative w-full h-[380px] md:h-[500px] lg:h-[560px] object-contain will-change-transform"
                   style={{
-                    filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
-                    maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
+                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.12))',
+                    maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
                   }}
                   loading="eager"
                 />
@@ -94,60 +101,76 @@ const Index = () => {
             </div>
 
             {/* Right — Content */}
-            <div className="flex flex-col items-center text-center md:w-[55%] md:items-start md:text-left">
+            <div className="flex flex-col items-center text-center md:w-[60%] md:items-start md:text-left">
+              {/* Badge */}
               <div className="opacity-0 animate-fade-up animation-delay-100">
-                <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent backdrop-blur-sm">
-                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                <span className="inline-flex items-center gap-2.5 rounded-full border border-accent/20 bg-accent/[0.08] px-5 py-2 text-sm font-medium text-accent backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                  </span>
                   Financial Advisor & Educator
                 </span>
               </div>
 
-              <h1 className="mt-8 font-display text-5xl leading-[1.1] text-foreground md:text-6xl lg:text-7xl opacity-0 animate-fade-up animation-delay-200">
-                Invest with clarity,
-                <br />
-                grow with{" "}
-                <span className="relative inline-block">
-                  <span className="hero-gradient-text">confidence.</span>
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-accent to-accent/40 rounded-full animate-hero-underline" />
+              {/* Headline */}
+              <h1 className="mt-8 leading-[1.05] tracking-tight opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: "'Inter', var(--font-body)" }}>
+                <span className="block text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-foreground hero-title-glow">
+                  Invest with clarity,
+                </span>
+                <span className="block text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold mt-1">
+                  <span className="text-foreground">grow with </span>
+                  <span className="relative">
+                    <span className="hero-gradient-text">confidence.</span>
+                    <span className="absolute -bottom-3 left-0 h-[3px] rounded-full bg-gradient-to-r from-accent via-secondary/60 to-transparent animate-hero-underline" style={{ width: '100%' }} />
+                  </span>
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-up animation-delay-300">
-                Investment advisor sharing insights on finance, investing and financial education. Building knowledge that lasts.
+              {/* Subtitle */}
+              <p className="mt-7 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed font-light opacity-0 animate-fade-up animation-delay-300">
+                Sharing insights on finance, investing and financial education.
+                <span className="text-foreground/70 font-normal"> Building knowledge that lasts.</span>
               </p>
 
-              <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start opacity-0 animate-fade-up animation-delay-400">
-                <Button variant="gradient" size="lg" asChild className="group text-base px-8 py-6 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
+              {/* Separator line */}
+              <div className="mt-8 h-px w-0 bg-gradient-to-r from-border via-accent/30 to-border animate-line-grow opacity-0 animate-fade-in animation-delay-400" />
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start opacity-0 animate-fade-up animation-delay-500">
+                <Button variant="gradient" size="lg" asChild className="btn-shimmer group text-base px-9 py-6 shadow-lg shadow-accent/15 hover:shadow-2xl hover:shadow-accent/25 transition-all duration-500 rounded-2xl">
                   <Link to="/blog">
                     Read Articles
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
                 </Button>
-                <Button variant="hero-outline" size="lg" asChild className="group text-base px-8 py-6 hover:bg-primary/5 transition-all duration-300">
+                <Button variant="hero-outline" size="lg" asChild className="group text-base px-9 py-6 rounded-2xl backdrop-blur-sm bg-background/50 hover:bg-background/80 transition-all duration-500">
                   <Link to="/library">
-                    Explore Financial Library
-                    <ArrowRight className="ml-2 h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
+                    Explore Library
+                    <ArrowRight className="ml-2 h-4 w-4 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                   </Link>
                 </Button>
               </div>
 
-              {/* Trust indicators */}
-              <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground opacity-0 animate-fade-up animation-delay-500">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span>10+ Years Experience</span>
-                </div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span>500+ Investors Educated</span>
-                </div>
+              {/* Trust row */}
+              <div className="mt-10 flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-3 opacity-0 animate-fade-up animation-delay-600">
+                {[
+                  { label: "10+ Years Experience", icon: Award },
+                  { label: "500+ Investors Educated", icon: Users },
+                  { label: "50+ Articles", icon: BookOpen },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <item.icon className="h-4 w-4 text-accent/70" />
+                    <span>{item.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </section>
 
       {/* Credibility Stats */}

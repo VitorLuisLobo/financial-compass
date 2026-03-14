@@ -145,7 +145,7 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
                 </Button>
-                <Button variant="hero-outline" size="lg" asChild className="group text-base px-9 py-6 rounded-2xl backdrop-blur-sm bg-background/50 hover:bg-background/80 transition-all duration-500">
+                <Button variant="hero-outline" size="lg" asChild className="group text-base px-9 py-6 rounded-2xl backdrop-blur-sm transition-all duration-500">
                   <Link to="/library">
                     Explore Library
                     <ArrowRight className="ml-2 h-4 w-4 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

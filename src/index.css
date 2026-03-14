@@ -119,6 +119,16 @@
     background-clip: text;
   }
 
+  /* Hero gradient text */
+  .hero-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(142 71% 55%) 50%, hsl(var(--secondary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
   /* Section gradients */
   .section-gradient {
     background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.4) 50%, hsl(var(--background)) 100%);

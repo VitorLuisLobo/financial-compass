@@ -63,27 +63,30 @@ const Index = () => {
       <SEOHead title="Home" description="Investment advisor sharing insights on finance, investing and financial education. Build knowledge that lasts." />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 dot-pattern opacity-40" />
-        <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Background effects */}
+        <div className="absolute inset-0 dot-pattern opacity-30" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[80%] bg-gradient-to-b from-primary/[0.04] via-accent/[0.03] to-transparent rounded-b-[50%]" />
+        <div className="absolute -top-60 -right-60 h-[500px] w-[500px] rounded-full bg-accent/[0.07] blur-[100px]" />
+        <div className="absolute -bottom-60 -left-60 h-[500px] w-[500px] rounded-full bg-primary/[0.07] blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-secondary/[0.03] blur-[120px]" />
 
-        <div className="container relative py-16 md:py-24 lg:py-32">
-          <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-12 lg:gap-16">
+        <div className="container relative py-20 md:py-28 lg:py-36">
+          <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-14 lg:gap-20">
             {/* Left — Photo */}
-            <div className="relative flex items-center justify-center w-full max-w-sm md:w-1/2 md:max-w-none animate-fade-up">
-              <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-accent/8 blur-3xl" />
-              <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-primary/6 blur-2xl" />
-              <div className="relative mt-8 md:mt-12">
+            <div className="relative flex items-center justify-center w-full max-w-sm md:w-[45%] md:max-w-none opacity-0 animate-fade-up">
+              <div className="absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-accent/10 blur-[80px]" />
+              <div className="absolute -top-8 -left-8 h-40 w-40 rounded-full bg-primary/8 blur-[60px]" />
+              <div className="relative mt-8 md:mt-0">
                 <img
                   ref={heroImageRef}
                   src={profilePhoto}
                   alt="Financial advisor profile"
-                  className="relative w-full h-[420px] md:h-[540px] lg:h-[600px] object-contain will-change-transform"
+                  className="relative w-full h-[400px] md:h-[520px] lg:h-[580px] object-contain will-change-transform"
                   style={{
-                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
-                    maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+                    filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
+                    maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
                   }}
                   loading="eager"
                 />
@@ -91,40 +94,60 @@ const Index = () => {
             </div>
 
             {/* Right — Content */}
-            <div className="flex flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
-              <div className="animate-fade-up animation-delay-100">
+            <div className="flex flex-col items-center text-center md:w-[55%] md:items-start md:text-left">
+              <div className="opacity-0 animate-fade-up animation-delay-100">
                 <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent backdrop-blur-sm">
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   Financial Advisor & Educator
                 </span>
               </div>
 
-              <h1 className="mt-6 font-display text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl animate-fade-up animation-delay-200">
+              <h1 className="mt-8 font-display text-5xl leading-[1.1] text-foreground md:text-6xl lg:text-7xl opacity-0 animate-fade-up animation-delay-200">
                 Invest with clarity,
                 <br />
-                grow with <span className="text-accent">confidence.</span>
+                grow with{" "}
+                <span className="relative inline-block">
+                  <span className="hero-gradient-text">confidence.</span>
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-accent to-accent/40 rounded-full animate-hero-underline" />
+                </span>
               </h1>
-              <p className="mt-5 max-w-lg text-lg text-muted-foreground animate-fade-up animation-delay-300">
+
+              <p className="mt-6 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-up animation-delay-300">
                 Investment advisor sharing insights on finance, investing and financial education. Building knowledge that lasts.
               </p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start animate-fade-up animation-delay-400">
-                <Button variant="gradient" size="lg" asChild className="group">
+              <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start opacity-0 animate-fade-up animation-delay-400">
+                <Button variant="gradient" size="lg" asChild className="group text-base px-8 py-6 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
                   <Link to="/blog">
                     Read Articles
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
-                <Button variant="hero-outline" size="lg" asChild className="group">
+                <Button variant="hero-outline" size="lg" asChild className="group text-base px-8 py-6 hover:bg-primary/5 transition-all duration-300">
                   <Link to="/library">
                     Explore Financial Library
-                    <ArrowRight className="ml-1 h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
                   </Link>
                 </Button>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground opacity-0 animate-fade-up animation-delay-500">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-accent" />
+                  <span>10+ Years Experience</span>
+                </div>
+                <div className="hidden sm:flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-accent" />
+                  <span>500+ Investors Educated</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Credibility Stats */}

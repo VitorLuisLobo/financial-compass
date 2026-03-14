@@ -119,6 +119,16 @@
     background-clip: text;
   }
 
+  /* Hero gradient text */
+  .hero-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(142 71% 55%) 50%, hsl(var(--secondary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
   /* Section gradients */
   .section-gradient {
     background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.4) 50%, hsl(var(--background)) 100%);
@@ -180,12 +190,27 @@
   to { opacity: 1; }
 }
 
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@keyframes hero-underline {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
 .animate-fade-up {
   animation: fade-up 0.6s ease-out forwards;
 }
 
 .animate-fade-in {
   animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-hero-underline {
+  animation: hero-underline 0.8s ease-out 0.6s forwards;
+  transform: scaleX(0);
 }
 
 .animation-delay-100 { animation-delay: 0.1s; }

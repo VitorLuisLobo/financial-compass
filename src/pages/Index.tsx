@@ -139,7 +139,7 @@ const Index = () => {
 
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start opacity-0 animate-fade-up animation-delay-500">
-                <Button variant="gradient" size="lg" asChild className="btn-shimmer group text-base px-9 py-6 shadow-lg shadow-accent/15 hover:shadow-2xl hover:shadow-accent/25 transition-all duration-500 rounded-2xl">
+                <Button variant="gradient" size="lg" asChild className="btn-shimmer group text-base px-9 py-6 shadow-lg shadow-accent/20 hover:shadow-2xl hover:shadow-accent/30 transition-all duration-500 rounded-2xl">
                   <Link to="/blog">
                     Read Articles
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />

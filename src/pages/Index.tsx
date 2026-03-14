@@ -115,7 +115,7 @@ const Index = () => {
               </div>
 
               {/* Headline */}
-              <h1 className="mt-8 leading-[1.05] tracking-tight opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: "'Inter', var(--font-body)" }}>
+              <h1 className="mt-8 leading-[1.05] tracking-tight opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: "'Manrope', var(--font-body)" }}>
                 <span className="block text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-foreground hero-title-glow">
                   Invest with clarity,
                 </span>

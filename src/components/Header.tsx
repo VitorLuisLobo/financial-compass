@@ -30,8 +30,10 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass shadow-sm" : "bg-background/50 backdrop-blur-md border-b border-border/50"
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/70 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-background/50"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
@@ -48,7 +50,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent/10 ${
+                className={`relative rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent/5 ${
                   isActive ? "text-accent" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -95,7 +97,7 @@ const Header = () => {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <nav className="border-t border-border/50 glass px-4 pb-4 lg:hidden animate-fade-in">
+        <nav className="border-t border-border/30 bg-background/90 backdrop-blur-2xl px-4 pb-4 lg:hidden animate-fade-in">
           {navItems.map((item) => {
             const isActive =
               location.pathname === item.path || (item.path !== "/" && location.pathname.startsWith(item.path));

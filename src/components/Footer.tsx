@@ -8,7 +8,7 @@ const Footer = () => (
     <div className="container relative py-14">
       <div className="grid gap-10 md:grid-cols-4">
         <div>
-          <h3 className="font-display text-xl">FinanceHub</h3>
+          <h3 className="font-display text-xl">Gabriela Rodrigues</h3>
           <p className="mt-3 text-sm text-primary-foreground/70">
             Sharing insights on finance, investing, and financial education.
           </p>
@@ -38,7 +38,11 @@ const Footer = () => (
           <h4 className="mb-4 text-sm font-semibold text-primary-foreground/90">Categories</h4>
           <div className="flex flex-col gap-2.5">
             {["Personal Finance", "Investing Basics", "Fixed Income", "Stock Market"].map((cat) => (
-              <Link key={cat} to="/blog" className="text-sm text-primary-foreground/60 transition-colors duration-300 hover:text-accent">
+              <Link
+                key={cat}
+                to="/blog"
+                className="text-sm text-primary-foreground/60 transition-colors duration-300 hover:text-accent"
+              >
                 {cat}
               </Link>
             ))}

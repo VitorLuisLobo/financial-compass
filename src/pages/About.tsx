@@ -16,7 +16,7 @@ const milestones = [
   },
   {
     year: "2024",
-    title: "Gabriela Rodrigues",
+    title: "Fin",
     description: "Created this platform as a comprehensive financial education resource.",
   },
 ];

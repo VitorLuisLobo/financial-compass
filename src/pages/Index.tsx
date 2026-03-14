@@ -92,7 +92,7 @@ const Index = () => {
                   alt="Financial advisor profile"
                   className="relative w-full h-[380px] md:h-[500px] lg:h-[560px] object-contain will-change-transform"
                   style={{
-                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.12))',
+                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.4))',
                     maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
                   }}
@@ -115,7 +115,7 @@ const Index = () => {
               </div>
 
               {/* Headline */}
-              <h1 className="mt-8 leading-[1.05] tracking-tight opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: "'Inter', var(--font-body)" }}>
+              <h1 className="mt-8 leading-[1.05] tracking-tight opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: "'Manrope', var(--font-body)" }}>
                 <span className="block text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-foreground hero-title-glow">
                   Invest with clarity,
                 </span>
@@ -139,13 +139,13 @@ const Index = () => {
 
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start opacity-0 animate-fade-up animation-delay-500">
-                <Button variant="gradient" size="lg" asChild className="btn-shimmer group text-base px-9 py-6 shadow-lg shadow-accent/15 hover:shadow-2xl hover:shadow-accent/25 transition-all duration-500 rounded-2xl">
+                <Button variant="gradient" size="lg" asChild className="btn-shimmer group text-base px-9 py-6 shadow-lg shadow-accent/20 hover:shadow-2xl hover:shadow-accent/30 transition-all duration-500 rounded-2xl">
                   <Link to="/blog">
                     Read Articles
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
                 </Button>
-                <Button variant="hero-outline" size="lg" asChild className="group text-base px-9 py-6 rounded-2xl backdrop-blur-sm bg-background/50 hover:bg-background/80 transition-all duration-500">
+                <Button variant="hero-outline" size="lg" asChild className="group text-base px-9 py-6 rounded-2xl backdrop-blur-sm transition-all duration-500">
                   <Link to="/library">
                     Explore Library
                     <ArrowRight className="ml-2 h-4 w-4 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

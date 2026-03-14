@@ -14,7 +14,7 @@ const NewsletterSignup = () => {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-accent/10 p-8 text-center">
+      <div className="rounded-2xl border border-accent/20 bg-accent/5 p-8 text-center backdrop-blur-sm">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/20">
           <Check className="h-7 w-7 text-accent" />
         </div>
@@ -25,17 +25,17 @@ const NewsletterSignup = () => {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-primary p-8 text-primary-foreground md:p-10">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent/30" />
-      <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-accent/10 blur-3xl" />
+    <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-card/80 backdrop-blur-sm p-8 md:p-10">
+      {/* Subtle glow */}
+      <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-accent/5 blur-3xl" />
+      <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-secondary/5 blur-3xl" />
 
       <div className="relative">
-        <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-foreground/10">
-          <Mail className="h-6 w-6 text-primary-foreground/80" />
+        <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 border border-accent/10">
+          <Mail className="h-6 w-6 text-accent" />
         </div>
-        <h3 className="mt-4 font-display text-xl text-primary-foreground">Stay informed</h3>
-        <p className="mt-2 text-sm text-primary-foreground/70">
+        <h3 className="mt-4 font-display text-xl text-foreground">Stay informed</h3>
+        <p className="mt-2 text-sm text-muted-foreground">
           Weekly insights on investing and personal finance. No spam.
         </p>
         <form onSubmit={handleSubmit} className="mt-5 flex gap-2">
@@ -45,7 +45,7 @@ const NewsletterSignup = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="flex-1 rounded-xl border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40 focus:border-accent"
+            className="flex-1 rounded-xl border-border bg-background/50 text-foreground placeholder:text-muted-foreground/50 focus:border-accent"
           />
           <Button type="submit" variant="gradient" className="group">
             Subscribe

@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ["DM Serif Display", "serif"],
-        body: ["DM Sans", "sans-serif"],
+        body: ["Manrope", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,6 +51,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gold: "hsl(var(--gold))",
         surface: {
           elevated: "hsl(var(--surface-elevated))",
           subtle: "hsl(var(--surface-subtle))",

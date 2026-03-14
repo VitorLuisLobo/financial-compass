@@ -65,7 +65,7 @@ const About = () => (
               About
             </span>
             <h1 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
-              The story behind <span className="gradient-text">FinanceHub</span>
+              The story behind <span className="gradient-text">Gabriela Rodrigues</span>
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               With over a decade of experience in financial markets, I created FinanceHub to bridge the gap between

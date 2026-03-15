@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LineChart, FileSpreadsheet, BarChart3, TrendingUp, ArrowRight } from "lucide-react";
+import { LineChart, FileSpreadsheet, BarChart3, TrendingUp, ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const projects = [
@@ -10,43 +10,40 @@ const projects = [
 ];
 
 const ProjectsSection = () => (
-  <section className="py-28 relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/[0.02] to-transparent" />
-    {/* Section divider */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-    <div className="container relative">
+  <section className="py-36">
+    <div className="container">
       <ScrollReveal>
-        <div className="flex items-end justify-between mb-14">
+        <div className="flex items-end justify-between mb-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Tools</p>
-            <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Tools</p>
+            <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
               Projects & Tools
             </h2>
-            <p className="mt-3 max-w-md text-muted-foreground">Experiments and resources to help investors make better decisions.</p>
           </div>
-          <Link to="/projects" className="hidden items-center gap-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors md:inline-flex group">
-            View all <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          <Link to="/projects" className="hidden items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:inline-flex group">
+            View all <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
+        <div className="h-px w-full bg-border/60 mb-12" />
       </ScrollReveal>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (
-          <ScrollReveal key={project.title} delay={i * 100}>
+          <ScrollReveal key={project.title} delay={i * 80}>
             <Link
               to="/projects"
-              className="group relative flex flex-col rounded-3xl border border-border/60 bg-card/60 backdrop-blur-sm p-7 transition-all duration-500 hover:-translate-y-1 hover:border-accent/20 hover:shadow-2xl overflow-hidden h-full"
+              className="group flex items-start gap-6 rounded-2xl border border-border/40 bg-card/30 p-8 transition-all duration-500 hover:bg-card/80 hover:border-border hover:-translate-y-1 hover:shadow-xl h-full"
             >
-              <div className="absolute -bottom-10 -right-10 h-24 w-24 rounded-full bg-accent/0 blur-2xl transition-all duration-500 group-hover:bg-accent/8" />
-
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 border border-accent/10 transition-colors duration-300 group-hover:bg-accent/15">
-                <project.icon className="h-6 w-6 text-accent" />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                <project.icon className="h-5 w-5 text-accent" />
               </div>
-              <h3 className="mt-5 text-base font-bold text-foreground group-hover:text-accent transition-colors duration-300" style={{ fontFamily: 'var(--font-display)' }}>
-                {project.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors duration-300" style={{ fontFamily: 'var(--font-display)' }}>
+                  {project.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+              </div>
+              <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-accent mt-1" />
             </Link>
           </ScrollReveal>
         ))}

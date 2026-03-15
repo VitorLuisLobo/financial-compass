@@ -84,7 +84,6 @@
     --gold: 43 74% 52%;
   }
 
-  /* Light mode override for accessibility */
   .light {
     --background: 220 20% 96%;
     --foreground: 220 26% 14%;
@@ -129,159 +128,17 @@
 }
 
 @layer components {
-  /* Glassmorphism */
   .glass {
     @apply bg-background/60 backdrop-blur-2xl border border-border/40;
   }
 
-  /* Premium card hover */
-  .card-hover {
-    @apply rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-500 ease-out;
-  }
-  .card-hover:hover {
-    @apply -translate-y-1 shadow-2xl border-accent/20;
-    box-shadow: 0 20px 60px -15px hsl(var(--accent) / 0.08), 0 8px 24px -8px rgba(0,0,0,0.3);
-  }
-
-  /* Gradient text */
   .gradient-text {
     background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--secondary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  /* Hero gradient text — vivid shifting gradient */
-  .hero-gradient-text {
-    background: linear-gradient(
-      120deg,
-      hsl(var(--accent)) 0%,
-      hsl(142 76% 56%) 25%,
-      hsl(var(--secondary)) 50%,
-      hsl(142 76% 56%) 75%,
-      hsl(var(--accent)) 100%
-    );
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 6s ease-in-out infinite;
-  }
-
-  /* Hero title glow */
-  .hero-title-glow {
-    text-shadow:
-      0 0 40px hsl(var(--accent) / 0.1),
-      0 0 80px hsl(var(--accent) / 0.05),
-      0 0 120px hsl(var(--secondary) / 0.03);
-  }
-
-  /* Hero mesh gradient background */
-  .hero-mesh {
-    background:
-      radial-gradient(ellipse 80% 60% at 50% -20%, hsl(var(--accent) / 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 50%, hsl(var(--secondary) / 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 40% at 20% 60%, hsl(var(--accent) / 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse 100% 80% at 50% 100%, hsl(var(--accent) / 0.02) 0%, transparent 60%);
-  }
-
-  /* Animated grid pattern */
-  .grid-pattern {
-    background-image:
-      linear-gradient(hsl(var(--muted-foreground) / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--muted-foreground) / 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  /* Floating orb */
-  .hero-orb {
-    border-radius: 50%;
-    filter: blur(100px);
-    animation: orb-float 8s ease-in-out infinite;
-  }
-  .hero-orb-2 {
-    animation-delay: -4s;
-    animation-duration: 10s;
-  }
-
-  /* Section gradients */
-  .section-gradient {
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.3) 50%, hsl(var(--background)) 100%);
-  }
-
-  .section-gradient-accent {
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.02) 0%, hsl(var(--secondary) / 0.04) 100%);
-  }
-
-  /* Photo ring */
-  .photo-ring {
-    @apply relative;
-  }
-  .photo-ring::before {
-    content: '';
-    @apply absolute -inset-2 rounded-full;
-    background: conic-gradient(from 0deg, hsl(var(--accent)), hsl(var(--secondary)), hsl(var(--accent)));
-    z-index: -1;
-  }
-
-  /* Dot pattern */
-  .dot-pattern {
-    background-image: radial-gradient(hsl(var(--muted-foreground) / 0.06) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  /* Icon container */
-  .icon-container {
-    @apply flex h-12 w-12 items-center justify-center rounded-xl;
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.1), hsl(var(--accent) / 0.2));
-    border: 1px solid hsl(var(--accent) / 0.1);
-  }
-
-  /* Stats pill */
-  .stat-pill {
-    @apply rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm px-5 py-3 text-center;
-  }
-
-  /* CTA shimmer */
-  .btn-shimmer {
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-shimmer::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 40%,
-      hsla(0, 0%, 100%, 0.1) 45%,
-      hsla(0, 0%, 100%, 0.2) 50%,
-      hsla(0, 0%, 100%, 0.1) 55%,
-      transparent 60%
-    );
-    background-size: 250% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  /* Premium glow border for special elements */
-  .glow-border {
-    position: relative;
-  }
-  .glow-border::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.3), transparent 40%, transparent 60%, hsl(var(--secondary) / 0.3));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  .glow-border:hover::before {
-    opacity: 1;
-  }
 }
-
 
 @layer utilities {
   .text-balance {
@@ -292,7 +149,7 @@
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -305,48 +162,12 @@
   to { opacity: 1; }
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-}
-
-@keyframes hero-underline {
-  from { transform: scaleX(0); transform-origin: left; }
-  to { transform: scaleX(1); transform-origin: left; }
-}
-
-@keyframes orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -20px) scale(1.05); }
-  50% { transform: translate(-10px, 20px) scale(0.95); }
-  75% { transform: translate(-30px, -10px) scale(1.02); }
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-@keyframes line-grow {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
 .animate-fade-up {
-  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
   animation: fade-in 0.5s ease-out forwards;
-}
-
-.animate-hero-underline {
-  animation: hero-underline 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-  transform: scaleX(0);
-}
-
-.animate-line-grow {
-  animation: line-grow 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 .animation-delay-100 { animation-delay: 0.1s; }

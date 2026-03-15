@@ -1,70 +1,55 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, TrendingUp, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const learningPaths = [
   {
     title: "Beginner Path",
-    icon: GraduationCap,
     steps: ["Financial organization", "Emergency fund", "First investments", "Portfolio diversification"],
     link: "/learning-paths",
   },
   {
     title: "Investment Path",
-    icon: TrendingUp,
     steps: ["Understanding risk", "Asset allocation", "Long term investing", "Passive investing"],
     link: "/learning-paths",
   },
 ];
 
 const LearningPathsSection = () => (
-  <section className="py-28 relative">
-    {/* Section divider line */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
+  <section className="py-36">
     <div className="container">
-      <ScrollReveal className="text-center mb-14">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Guided Learning</p>
-        <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl" style={{ fontFamily: 'var(--font-display)' }}>
-          Start Learning About Investing
+      <ScrollReveal>
+        <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Guided Learning</p>
+        <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
+          Learning Paths
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Follow structured paths designed to take you from beginner to confident investor.
-        </p>
+        <div className="mt-8 h-px w-full bg-border/60" />
       </ScrollReveal>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="mt-14 grid gap-12 md:grid-cols-2">
         {learningPaths.map((path, i) => (
           <ScrollReveal key={path.title} delay={i * 150}>
-            <div className="group relative rounded-3xl border border-border/60 bg-card/60 backdrop-blur-sm p-8 md:p-10 transition-all duration-500 hover:border-accent/20 hover:shadow-2xl overflow-hidden h-full">
-              {/* Background number */}
-              <span className="absolute top-6 right-8 text-[6rem] font-extrabold text-foreground/[0.03] leading-none select-none">
-                {String(i + 1).padStart(2, '0')}
-              </span>
+            <div className="flex flex-col h-full">
+              <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'var(--font-display)' }}>
+                {path.title}
+              </h3>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 border border-accent/10">
-                  <path.icon className="h-6 w-6 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground" style={{ fontFamily: 'var(--font-display)' }}>{path.title}</h3>
-              </div>
-
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-5 flex-1">
                 {path.steps.map((step, j) => (
-                  <div key={j} className="flex items-center gap-4">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-bold text-accent border border-accent/15">
+                  <div key={j} className="flex items-center gap-5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border/60 text-sm font-semibold text-muted-foreground">
                       {j + 1}
-                    </div>
-                    <span className="text-sm text-muted-foreground font-medium">{step}</span>
+                    </span>
+                    <span className="text-base text-foreground/80">{step}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 to={path.link}
-                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all duration-300 hover:gap-3"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all duration-300 hover:gap-3 group"
               >
-                Start this path <ArrowRight className="h-4 w-4" />
+                Start this path <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </ScrollReveal>

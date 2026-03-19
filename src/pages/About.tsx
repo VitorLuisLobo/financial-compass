@@ -1,5 +1,8 @@
-import { Award, BookOpen, Briefcase, Target } from "lucide-react";
+import { Award, BookOpen, Briefcase, Target, ExternalLink } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import InstagramEmbed from "@/components/InstagramEmbed";
+
+const instagramApresentacao = "https://www.instagram.com/reel/EXEMPLO_SOBRE/";
 
 const milestones = [
   {

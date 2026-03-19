@@ -82,22 +82,42 @@ const LearningPaths = () => (
               </div>
             </div>
 
-            <div className="relative mt-8 ml-5 border-l-2 border-accent/20 pl-8 space-y-6">
+            <div className="relative mt-8 ml-5 border-l-2 border-accent/20 pl-8 space-y-4">
               {path.steps.map((step, i) => (
-                <Link
-                  key={i}
-                  to={step.link}
-                  className="group relative block"
-                >
+                <Collapsible key={i} className="group/step relative">
                   {/* Step dot */}
-                  <div className="absolute -left-[2.55rem] top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-accent bg-background text-xs font-bold text-accent shadow-md shadow-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                  <div className="absolute -left-[2.55rem] top-3 flex h-6 w-6 items-center justify-center rounded-full border-2 border-accent bg-background text-xs font-bold text-accent shadow-md shadow-accent/20">
                     {i + 1}
                   </div>
-                  <h3 className="font-display text-base text-foreground group-hover:text-accent transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="mt-0.5 text-sm text-muted-foreground">{step.description}</p>
-                </Link>
+                  <CollapsibleTrigger className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors hover:bg-accent/5">
+                    <div className="flex-1">
+                      <span className="flex items-center gap-2">
+                        <span className="font-display text-base text-foreground">{step.title}</span>
+                        {step.instagramUrl && (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-semibold text-accent">
+                            <Play className="h-2.5 w-2.5" /> vídeo
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                    <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]/step:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pl-3 pt-2 pb-2">
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                    {step.instagramUrl && (
+                      <div className="mt-4">
+                        <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-accent">Vídeo de apoio</span>
+                        <InstagramEmbed url={step.instagramUrl} maxWidth={400} />
+                      </div>
+                    )}
+                    <Link
+                      to={step.link}
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                    >
+                      Ler conteúdo completo <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </CollapsibleContent>
+                </Collapsible>
               ))}
             </div>
 

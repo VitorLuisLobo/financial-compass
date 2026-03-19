@@ -61,6 +61,21 @@ const ArticlePage = () => {
           </p>
         </div>
 
+        {/* Instagram Video Embed */}
+        {article.instagramUrl && (
+          <div className="mt-12 max-w-3xl">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-accent">Também em vídeo</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <InstagramEmbed url={article.instagramUrl} maxWidth={480} className="mx-auto" />
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              Prefere assistir? Veja o resumo deste conteúdo no Instagram.
+            </p>
+          </div>
+        )}
+
         {/* Related Library Topics */}
         {article.relatedLibraryTopics.length > 0 && (
           <aside className="mt-12 rounded-lg border border-accent/20 bg-accent/5 p-6">

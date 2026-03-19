@@ -55,6 +55,31 @@ const Library = () => {
             <p className="mt-6 leading-relaxed text-muted-foreground">{topic.content}</p>
           </article>
 
+          {/* Instagram Embed - Entenda em 60 segundos */}
+          {topic.instagramUrl && (
+            <div className="mt-8 overflow-hidden rounded-2xl bg-[#1C1917] p-6 md:p-8">
+              <div className="flex flex-col gap-6 md:flex-row md:items-center">
+                <div className="md:w-[40%]">
+                  <InstagramEmbed url={topic.instagramUrl} maxWidth={400} />
+                </div>
+                <div className="md:w-[60%]">
+                  <h2 className="font-display text-2xl text-white">Entenda em 60 segundos</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    Quer uma explicação rápida? Assista ao reel sobre <strong className="text-white">{topic.title}</strong>.
+                  </p>
+                  <a
+                    href={topic.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                  >
+                    Ver no Instagram <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Related Blog Articles */}
           {topic.relatedArticles.length > 0 && (
             <aside className="mt-8 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-accent/10 p-7">

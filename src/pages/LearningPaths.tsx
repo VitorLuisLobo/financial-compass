@@ -29,12 +29,12 @@ const paths = [
     icon: TrendingUp,
     color: "primary",
     steps: [
-      { title: "Risk vs Return", description: "Understand the fundamental trade-off in investing.", link: "/library/investing-basics/risk-vs-return" },
-      { title: "Fixed Income Deep Dive", description: "Compare CDB, LCI, and Treasury Bonds.", link: "/library/financial-products/cdb-bank-deposit-certificate" },
-      { title: "Understanding Volatility", description: "Learn to navigate market ups and downs.", link: "/library/risk-management/understanding-volatility" },
-      { title: "ETFs & Passive Investing", description: "Build diversified portfolios with low-cost funds.", link: "/library/financial-products/etfs-exchange-traded-funds" },
-      { title: "Fundamental Analysis", description: "Evaluate companies through financial statements.", link: "/library/market-analysis/reading-financial-statements" },
-      { title: "Tax-Efficient Investing", description: "Optimize returns through smart tax planning.", link: "/library/tax-planning/investment-taxation" },
+      { title: "Risk vs Return", description: "Understand the fundamental trade-off in investing.", link: "/library/investing-basics/risk-vs-return", instagramUrl: null },
+      { title: "Fixed Income Deep Dive", description: "Compare CDB, LCI, and Treasury Bonds.", link: "/library/financial-products/cdb-bank-deposit-certificate", instagramUrl: null },
+      { title: "Understanding Volatility", description: "Learn to navigate market ups and downs.", link: "/library/risk-management/understanding-volatility", instagramUrl: null },
+      { title: "ETFs & Passive Investing", description: "Build diversified portfolios with low-cost funds.", link: "/library/financial-products/etfs-exchange-traded-funds", instagramUrl: null },
+      { title: "Fundamental Analysis", description: "Evaluate companies through financial statements.", link: "/library/market-analysis/reading-financial-statements", instagramUrl: null },
+      { title: "Tax-Efficient Investing", description: "Optimize returns through smart tax planning.", link: "/library/tax-planning/investment-taxation", instagramUrl: null },
     ],
   },
 ];

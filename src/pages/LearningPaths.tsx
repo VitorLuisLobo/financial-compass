@@ -14,12 +14,12 @@ const paths = [
     icon: GraduationCap,
     color: "accent",
     steps: [
-      { title: "Financial Organization", description: "Learn budgeting and expense tracking fundamentals.", link: "/library/financial-organization/budget-planning" },
-      { title: "Emergency Fund", description: "Build your safety net before investing.", link: "/library/financial-organization/emergency-fund" },
-      { title: "Saving Strategies", description: "Effective methods to save consistently.", link: "/library/financial-organization/saving-strategies" },
-      { title: "Understanding CDI & Selic", description: "Learn the benchmark rates that drive Brazilian investments.", link: "/library/investing-basics/what-is-cdi" },
-      { title: "First Investments", description: "Start with safe, liquid fixed income options.", link: "/library/financial-products/treasury-bonds" },
-      { title: "Portfolio Diversification", description: "Spread risk across different asset classes.", link: "/library/risk-management/portfolio-diversification" },
+      { title: "Financial Organization", description: "Learn budgeting and expense tracking fundamentals.", link: "/library/financial-organization/budget-planning", instagramUrl: "https://www.instagram.com/reel/EXEMPLO_ORCAMENTO/" },
+      { title: "Emergency Fund", description: "Build your safety net before investing.", link: "/library/financial-organization/emergency-fund", instagramUrl: "https://www.instagram.com/reel/EXEMPLO_RESERVA/" },
+      { title: "Saving Strategies", description: "Effective methods to save consistently.", link: "/library/financial-organization/saving-strategies", instagramUrl: null },
+      { title: "Understanding CDI & Selic", description: "Learn the benchmark rates that drive Brazilian investments.", link: "/library/investing-basics/what-is-cdi", instagramUrl: null },
+      { title: "First Investments", description: "Start with safe, liquid fixed income options.", link: "/library/financial-products/treasury-bonds", instagramUrl: "https://www.instagram.com/reel/EXEMPLO_PRIMEIROS_INVESTIMENTOS/" },
+      { title: "Portfolio Diversification", description: "Spread risk across different asset classes.", link: "/library/risk-management/portfolio-diversification", instagramUrl: "https://www.instagram.com/reel/EXEMPLO_DIVERSIFICACAO/" },
     ],
   },
   {

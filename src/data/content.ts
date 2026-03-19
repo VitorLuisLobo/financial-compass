@@ -16,6 +16,7 @@ export interface LibraryTopic {
   title: string;
   content: string;
   relatedArticles: string[]; // article slugs
+  instagramUrl?: string;
 }
 
 export interface LibraryCategory {

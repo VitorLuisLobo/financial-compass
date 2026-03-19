@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Search, BookOpen, ChevronRight, TrendingUp, Landmark, PiggyBank, BarChart3, Shield, DollarSign, ArrowLeft, ArrowRight } from "lucide-react";
+import { Search, BookOpen, ChevronRight, TrendingUp, Landmark, PiggyBank, BarChart3, Shield, DollarSign, ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SEOHead from "@/components/SEOHead";
+import InstagramEmbed from "@/components/InstagramEmbed";
 import { libraryData, findArticle } from "@/data/content";
 import type { LibraryCategory, LibraryTopic } from "@/data/content";
 

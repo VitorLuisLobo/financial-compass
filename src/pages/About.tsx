@@ -1,5 +1,8 @@
-import { Award, BookOpen, Briefcase, Target } from "lucide-react";
+import { Award, BookOpen, Briefcase, Target, ExternalLink } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import InstagramEmbed from "@/components/InstagramEmbed";
+
+const instagramApresentacao = "https://www.instagram.com/reel/EXEMPLO_SOBRE/";
 
 const milestones = [
   {
@@ -146,6 +149,25 @@ const About = () => (
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* Me conheça melhor - Instagram */}
+    <section className="bg-[#1C1917] py-20">
+      <div className="container text-center">
+        <h2 className="font-display text-3xl text-white md:text-4xl">Me conheça melhor</h2>
+        <p className="mt-3 text-white/60">Um pouco mais sobre minha trajetória no Instagram</p>
+        <div className="mt-8">
+          <InstagramEmbed url={instagramApresentacao} maxWidth={480} />
+        </div>
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+        >
+          Seguir no Instagram <ExternalLink className="h-3.5 w-3.5" />
+        </a>
       </div>
     </section>
   </div>

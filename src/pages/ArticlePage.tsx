@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, Clock, Calendar } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import InstagramEmbed from "@/components/InstagramEmbed";
 import { allArticles, findLibraryTopic, findArticle } from "@/data/content";
 
 const ArticlePage = () => {
@@ -59,6 +60,21 @@ const ArticlePage = () => {
             {article.excerpt} This topic is explored in depth below with practical examples, data-driven insights, and actionable takeaways you can apply to your own financial strategy.
           </p>
         </div>
+
+        {/* Instagram Video Embed */}
+        {article.instagramUrl && (
+          <div className="mt-12 max-w-3xl">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-accent">Também em vídeo</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <InstagramEmbed url={article.instagramUrl} maxWidth={480} className="mx-auto" />
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              Prefere assistir? Veja o resumo deste conteúdo no Instagram.
+            </p>
+          </div>
+        )}
 
         {/* Related Library Topics */}
         {article.relatedLibraryTopics.length > 0 && (

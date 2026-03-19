@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, Clock, Calendar } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import InstagramEmbed from "@/components/InstagramEmbed";
 import { allArticles, findLibraryTopic, findArticle } from "@/data/content";
 
 const ArticlePage = () => {

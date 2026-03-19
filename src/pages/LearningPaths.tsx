@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ArrowRight, GraduationCap, TrendingUp, BookOpen } from "lucide-react";
+import { CheckCircle2, ArrowRight, GraduationCap, TrendingUp, BookOpen, ChevronDown, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import InstagramEmbed from "@/components/InstagramEmbed";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const paths = [
   {

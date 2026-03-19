@@ -8,6 +8,7 @@ export interface Article {
   readTime: string;
   date: string;
   relatedLibraryTopics: string[]; // slugified topic titles
+  instagramUrl?: string;
 }
 
 export interface LibraryTopic {

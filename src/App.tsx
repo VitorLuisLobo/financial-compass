@@ -44,6 +44,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <GabiFAB />
           </div>
         </BrowserRouter>
       </TooltipProvider>

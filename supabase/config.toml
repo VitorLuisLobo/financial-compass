@@ -1,1 +1,4 @@
 project_id = "urstvnfhwribinoibkop"
+
+[functions.gabi-chat]
+verify_jwt = false

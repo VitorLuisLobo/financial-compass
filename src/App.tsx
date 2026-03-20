@@ -15,6 +15,7 @@ import LearningPaths from "./pages/LearningPaths";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import GabiFAB from "./components/GabiFAB";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <GabiFAB />
           </div>
         </BrowserRouter>
       </TooltipProvider>

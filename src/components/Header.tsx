@@ -2,16 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
-
-const navItems = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Blog", path: "/blog" },
-  { label: "Library", path: "/library" },
-  { label: "Learning", path: "/learning-paths" },
-  { label: "Projects", path: "/projects" },
-  { label: "Contact", path: "/contact" },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const location = useLocation();
@@ -19,6 +11,17 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { label: t('nav.home'), path: "/" },
+    { label: t('nav.about'), path: "/about" },
+    { label: t('nav.blog'), path: "/blog" },
+    { label: t('nav.library'), path: "/library" },
+    { label: t('nav.learning'), path: "/learning-paths" },
+    { label: t('nav.projects'), path: "/projects" },
+    { label: t('nav.contact'), path: "/contact" },
+  ];
 
   useEffect(() => setMounted(true), []);
 
@@ -59,10 +62,14 @@ const Header = () => {
             );
           })}
 
+          <div className="ml-2">
+            <LanguageSwitcher />
+          </div>
+
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="ml-3 flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/50"
+              className="ml-1 flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/50"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -72,6 +79,7 @@ const Header = () => {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher />
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

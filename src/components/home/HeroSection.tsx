@@ -21,7 +21,7 @@ const HeroSection = () => {
           {/* Left — 7 cols */}
           <div className="flex flex-col lg:col-span-7">
             <p className="text-sm font-medium uppercase tracking-[0.25em] text-muted-foreground opacity-0 animate-fade-up">
-
+              SEU DINHEIRO, SUA LIBERDADE
             </p>
 
             <h1 className="mt-8 opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: 'var(--font-display)' }}>

@@ -33,7 +33,7 @@ const HeroSection = () => {
               </span>
               <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold leading-[0.95] tracking-tight mt-2">
                 <span className="text-foreground mx-0 px-0">viva sem</span>
-                <span className="text-accent"></span>
+                <span className="text-accent"> limite</span>
               </span>
             </h1>
 

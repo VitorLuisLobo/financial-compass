@@ -4,12 +4,12 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { libraryData } from "@/data/content";
 
 const libraryCategories = [
-{ name: "Investing Basics", slug: "investing-basics" },
-{ name: "Financial Products", slug: "financial-products" },
-{ name: "Financial Organization", slug: "financial-organization" },
-{ name: "Market Analysis", slug: "market-analysis" },
-{ name: "Risk Management", slug: "risk-management" },
-{ name: "Tax & Planning", slug: "tax-planning" }];
+{ name: "Fundos de Investimento", slug: "investing-basics" },
+{ name: "Produtos Financeiros", slug: "financial-products" },
+{ name: "Organização Financeira", slug: "financial-organization" },
+{ name: "Análise de Mercado", slug: "market-analysis" },
+{ name: "Gestão de Risco", slug: "risk-management" },
+{ name: "Impostos e Planejamento", slug: "tax-planning" }];
 
 
 const LibrarySection = () =>

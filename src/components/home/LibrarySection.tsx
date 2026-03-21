@@ -18,11 +18,11 @@ const LibrarySection = () =>
       <ScrollReveal className="text-center mb-16">
         <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">BASE DE CONHECIMENTO</p>
         <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-
-      </h2>
+          BIBLIOTECA FINANCEIRA
+        </h2>
         <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-
-      </p>
+          Conteúdo organizado por tema. Explore qualquer categoria e construa uma base sólida de conhecimento.
+        </p>
         <div className="mx-auto mt-8 h-px w-24 bg-border" />
       </ScrollReveal>
 

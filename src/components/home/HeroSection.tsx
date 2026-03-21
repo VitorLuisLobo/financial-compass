@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "500+", label: "Investors Educated" },
-  { value: "50+", label: "Articles Published" },
-];
+{ value: "10+", label: "Years Experience" },
+{ value: "500+", label: "Investors Educated" },
+{ value: "50+", label: "Articles Published" }];
+
 
 const HeroSection = () => {
   return (
@@ -21,25 +21,25 @@ const HeroSection = () => {
           {/* Left — 7 cols */}
           <div className="flex flex-col lg:col-span-7">
             <p className="text-sm font-medium uppercase tracking-[0.25em] text-muted-foreground opacity-0 animate-fade-up">
-              Financial Advisor & Educator
+
             </p>
 
             <h1 className="mt-8 opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: 'var(--font-display)' }}>
-              <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-foreground leading-[0.95] tracking-tight">
-                Invest with
+              <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-foreground leading-[0.95] tracking-tight">Invista com
+
               </span>
-              <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-foreground leading-[0.95] tracking-tight mt-2">
-                clarity, grow
+              <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-foreground leading-[0.95] tracking-tight mt-2">inteligência
+
               </span>
               <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold leading-[0.95] tracking-tight mt-2">
-                <span className="text-foreground">with </span>
-                <span className="text-accent">confidence.</span>
+                <span className="text-foreground mx-0 px-0">viva sem</span>
+                <span className="text-accent"></span>
               </span>
             </h1>
 
-            <p className="mt-10 max-w-md text-lg text-muted-foreground leading-relaxed opacity-0 animate-fade-up animation-delay-300">
-              Sharing insights on finance, investing and financial education.
-              Building knowledge that lasts.
+            <p className="mt-10 max-w-md text-lg text-muted-foreground leading-relaxed opacity-0 animate-fade-up animation-delay-300">Finanças pessoas, investimentos e educação financeira de um jeito simples e aplicável na sua vida real.
+
+
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4 opacity-0 animate-fade-up animation-delay-400">
@@ -58,8 +58,8 @@ const HeroSection = () => {
 
             {/* Stats row — pure typography */}
             <div className="mt-16 flex gap-12 opacity-0 animate-fade-up animation-delay-600">
-              {stats.map((stat, i) => (
-                <div key={stat.label} className="flex flex-col">
+              {stats.map((stat, i) =>
+              <div key={stat.label} className="flex flex-col">
                   <span className="text-3xl md:text-4xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
                     {stat.value}
                   </span>
@@ -67,7 +67,7 @@ const HeroSection = () => {
                     {stat.label}
                   </span>
                 </div>
-              ))}
+              )}
             </div>
           </div>
 
@@ -80,10 +80,10 @@ const HeroSection = () => {
                   alt="Financial advisor profile"
                   className="w-full h-auto object-contain"
                   style={{
-                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))',
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))'
                   }}
-                  loading="eager"
-                />
+                  loading="eager" />
+                
               </div>
               {/* Subtle shadow beneath */}
               <div className="absolute -bottom-6 left-[10%] right-[10%] h-12 rounded-full bg-accent/5 blur-2xl" />
@@ -91,8 +91,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;

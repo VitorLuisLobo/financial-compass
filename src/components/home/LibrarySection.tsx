@@ -4,35 +4,35 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { libraryData } from "@/data/content";
 
 const libraryCategories = [
-  { name: "Investing Basics", slug: "investing-basics" },
-  { name: "Financial Products", slug: "financial-products" },
-  { name: "Financial Organization", slug: "financial-organization" },
-  { name: "Market Analysis", slug: "market-analysis" },
-  { name: "Risk Management", slug: "risk-management" },
-  { name: "Tax & Planning", slug: "tax-planning" },
-];
+{ name: "Investing Basics", slug: "investing-basics" },
+{ name: "Financial Products", slug: "financial-products" },
+{ name: "Financial Organization", slug: "financial-organization" },
+{ name: "Market Analysis", slug: "market-analysis" },
+{ name: "Risk Management", slug: "risk-management" },
+{ name: "Tax & Planning", slug: "tax-planning" }];
 
-const LibrarySection = () => (
-  <section className="py-36">
+
+const LibrarySection = () =>
+<section className="py-36">
     <div className="container">
       <ScrollReveal className="text-center mb-16">
-        <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Knowledge Hub</p>
+        <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">BASE DE CONHECIMENTO</p>
         <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-          Financial Library
-        </h2>
+
+      </h2>
         <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-          Structured knowledge organized by topic. Dive into any category to build lasting understanding.
-        </p>
+
+      </p>
         <div className="mx-auto mt-8 h-px w-24 bg-border" />
       </ScrollReveal>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {libraryCategories.map((cat, i) => (
-          <ScrollReveal key={cat.slug} delay={i * 60}>
+        {libraryCategories.map((cat, i) =>
+      <ScrollReveal key={cat.slug} delay={i * 60}>
             <Link
-              to={`/library/${cat.slug}`}
-              className="group flex items-center justify-between rounded-2xl border border-border/40 bg-card/30 p-7 transition-all duration-500 hover:bg-card/80 hover:border-border hover:shadow-lg"
-            >
+          to={`/library/${cat.slug}`}
+          className="group flex items-center justify-between rounded-2xl border border-border/40 bg-card/30 p-7 transition-all duration-500 hover:bg-card/80 hover:border-border hover:shadow-lg">
+          
               <div className="flex items-center gap-4">
                 <div className="h-2 w-2 rounded-full bg-accent/60" />
                 <div>
@@ -40,17 +40,17 @@ const LibrarySection = () => (
                     {cat.name}
                   </h3>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {libraryData.find(c => c.slug === cat.slug)?.topics.length || 0} topics
+                    {libraryData.find((c) => c.slug === cat.slug)?.topics.length || 0} topics
                   </p>
                 </div>
               </div>
               <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-accent" />
             </Link>
           </ScrollReveal>
-        ))}
+      )}
       </div>
     </div>
-  </section>
-);
+  </section>;
+
 
 export default LibrarySection;

@@ -12,25 +12,25 @@ const FeaturedArticles = () => {
         <ScrollReveal>
           <div className="flex items-end justify-between mb-16">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Latest</p>
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">EM DESTAQUE</p>
               <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-                Featured Articles
+
               </h2>
             </div>
-            <Link to="/blog" className="hidden items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:inline-flex group">
-              View all <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <Link to="/blog" className="hidden items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:inline-flex group">View all
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
           <div className="h-px w-full bg-border/60 mb-12" />
         </ScrollReveal>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {articles.map((article, i) => (
-            <ScrollReveal key={article.slug} delay={i * 100}>
+          {articles.map((article, i) =>
+          <ScrollReveal key={article.slug} delay={i * 100}>
               <Link
-                to={`/blog/${article.slug}`}
-                className="group flex flex-col h-full rounded-2xl border border-border/40 bg-card/50 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-border hover:shadow-xl"
-              >
+              to={`/blog/${article.slug}`}
+              className="group flex flex-col h-full rounded-2xl border border-border/40 bg-card/50 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-border hover:shadow-xl">
+              
                 <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
                   {article.category}
                 </span>
@@ -50,7 +50,7 @@ const FeaturedArticles = () => {
                 </div>
               </Link>
             </ScrollReveal>
-          ))}
+          )}
         </div>
 
         <div className="mt-10 text-center md:hidden">
@@ -59,8 +59,8 @@ const FeaturedArticles = () => {
           </Link>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default FeaturedArticles;

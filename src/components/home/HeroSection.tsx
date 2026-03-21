@@ -21,7 +21,7 @@ const HeroSection = () => {
           {/* Left — 7 cols */}
           <div className="flex flex-col lg:col-span-7">
             <p className="text-sm font-medium uppercase tracking-[0.25em] text-muted-foreground opacity-0 animate-fade-up">
-
+              SEU DINHEIRO, SUA LIBERDADE
             </p>
 
             <h1 className="mt-8 opacity-0 animate-fade-up animation-delay-200" style={{ fontFamily: 'var(--font-display)' }}>
@@ -33,7 +33,7 @@ const HeroSection = () => {
               </span>
               <span className="block text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] font-bold leading-[0.95] tracking-tight mt-2">
                 <span className="text-foreground mx-0 px-0">viva sem</span>
-                <span className="text-accent"></span>
+                <span className="text-accent"> limite</span>
               </span>
             </h1>
 
@@ -45,7 +45,7 @@ const HeroSection = () => {
             <div className="mt-10 flex flex-wrap gap-4 opacity-0 animate-fade-up animation-delay-400">
               <Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-base font-semibold transition-all duration-300 group">
                 <Link to="/blog">
-                  Read Articles
+                  Ver conteúdos
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>

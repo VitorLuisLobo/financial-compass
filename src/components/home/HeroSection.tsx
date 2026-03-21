@@ -45,7 +45,7 @@ const HeroSection = () => {
             <div className="mt-10 flex flex-wrap gap-4 opacity-0 animate-fade-up animation-delay-400">
               <Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-base font-semibold transition-all duration-300 group">
                 <Link to="/blog">
-                  Read Articles
+                  Ver conteúdos
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>

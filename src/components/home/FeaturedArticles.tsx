@@ -14,7 +14,7 @@ const FeaturedArticles = () => {
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">EM DESTAQUE</p>
               <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-
+                LEITURAS DA SEMANA
               </h2>
             </div>
             <Link to="/blog" className="hidden items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:inline-flex group">View all

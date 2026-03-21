@@ -4,13 +4,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const learningPaths = [
 {
-  title: "Beginner Path",
-  steps: ["Financial organization", "Emergency fund", "First investments", "Portfolio diversification"],
+  title: "Trilha Iniciante",
+  steps: ["Organização financeira", "Reserva de emergência", "Primeiros investimentos", "Diversificação de carteira"],
   link: "/learning-paths"
 },
 {
-  title: "Investment Path",
-  steps: ["Understanding risk", "Asset allocation", "Long term investing", "Passive investing"],
+  title: "Trilha de Investimentos",
+  steps: ["Entendendo o risco", "Alocação de ativos", "Investimentos de longo prazo", "Investimento Passivo"],
   link: "/learning-paths"
 }];
 

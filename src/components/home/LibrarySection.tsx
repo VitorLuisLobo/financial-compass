@@ -40,7 +40,7 @@ const LibrarySection = () =>
                     {cat.name}
                   </h3>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {libraryData.find((c) => c.slug === cat.slug)?.topics.length || 0} topics
+                    {libraryData.find((c) => c.slug === cat.slug)?.topics.length || 0} tópicos
                   </p>
                 </div>
               </div>

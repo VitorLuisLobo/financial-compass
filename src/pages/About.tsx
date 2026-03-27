@@ -3,7 +3,7 @@ import profilePhoto from "@/assets/profile-photo.png";
 import InstagramEmbed from "@/components/InstagramEmbed";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const instagramApresentacao = "https://www.instagram.com/reel/EXEMPLO_SOBRE/";
+const instagramApresentacao = "https://www.instagram.com/gabrodriguesm/";
 
 const About = () => {
   const { t } = useLanguage();
@@ -105,7 +105,7 @@ const About = () => {
           <h2 className="font-display text-3xl text-white md:text-4xl">{t('about.knowMe')}</h2>
           <p className="mt-3 text-white/60">{t('about.knowMeDesc')}</p>
           <div className="mt-8"><InstagramEmbed url={instagramApresentacao} maxWidth={480} /></div>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+          <a href="https://www.instagram.com/gabrodriguesm/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
             {t('about.followInsta')} <ExternalLink className="h-3.5 w-3.5" />
           </a>
         </div>

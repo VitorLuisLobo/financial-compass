@@ -15,6 +15,8 @@ import Library from "./pages/Library";
 import LearningPaths from "./pages/LearningPaths";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import StartHere from "./pages/StartHere";
+import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 import GabiFAB from "./components/GabiFAB";
 
@@ -42,6 +44,8 @@ const App = () => (
                   <Route path="/learning-paths" element={<LearningPaths />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/comece-aqui" element={<StartHere />} />
+                  <Route path="/links" element={<Links />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

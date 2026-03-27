@@ -271,6 +271,39 @@ export const translations = {
   'blogCat.stockMarketDesc': { pt: 'Ações, ciclos de mercado e análise de ações.', en: 'Equities, market cycles, and stock analysis.', es: 'Acciones, ciclos de mercado y análisis de acciones.' },
   'blogCat.marketInsights': { pt: 'Insights de Mercado', en: 'Market Insights', es: 'Perspectivas del Mercado' },
   'blogCat.marketInsightsDesc': { pt: 'Comentários e análises sobre as condições atuais do mercado.', en: 'Commentary and analysis on current market conditions.', es: 'Comentarios y análisis sobre las condiciones actuales del mercado.' },
+
+  // ─── Start Here Page ───
+  'nav.startHere': { pt: 'Comece Aqui', en: 'Start Here', es: 'Empieza Aquí' },
+  'start.badge': { pt: 'Novo por aqui?', en: 'New here?', es: '¿Nuevo aquí?' },
+  'start.title': { pt: 'Comece sua jornada financeira', en: 'Start your financial journey', es: 'Empieza tu viaje financiero' },
+  'start.desc': { pt: 'Um guia passo a passo para você que quer organizar as finanças e começar a investir com segurança.', en: 'A step-by-step guide for organizing your finances and starting to invest with confidence.', es: 'Una guía paso a paso para organizar tus finanzas y empezar a invertir con seguridad.' },
+  'start.step1Title': { pt: 'Organize suas finanças', en: 'Organize your finances', es: 'Organiza tus finanzas' },
+  'start.step1Desc': { pt: 'Antes de investir, é essencial entender para onde seu dinheiro vai. Aprenda a criar um orçamento e construir sua reserva de emergência.', en: 'Before investing, understand where your money goes. Learn to budget and build your emergency fund.', es: 'Antes de invertir, entiende a dónde va tu dinero. Aprende a presupuestar y construir tu fondo de emergencia.' },
+  'start.step2Title': { pt: 'Entenda os conceitos básicos', en: 'Understand the basics', es: 'Entiende los conceptos básicos' },
+  'start.step2Desc': { pt: 'Aprenda o que é CDI, Selic, inflação e a relação risco-retorno. São os fundamentos para qualquer decisão de investimento.', en: 'Learn about CDI, Selic, inflation and risk-return. These are the foundations for any investment decision.', es: 'Aprende qué es CDI, Selic, inflación y la relación riesgo-retorno. Son los fundamentos para cualquier decisión de inversión.' },
+  'start.step3Title': { pt: 'Siga uma trilha de aprendizado', en: 'Follow a learning path', es: 'Sigue una ruta de aprendizaje' },
+  'start.step3Desc': { pt: 'Escolha entre a Trilha Iniciante ou a Trilha de Investimentos e evolua com conteúdos organizados passo a passo.', en: 'Choose between the Beginner or Investment Path and progress with step-by-step organized content.', es: 'Elige entre la Ruta Principiante o la Ruta de Inversiones y avanza con contenido organizado paso a paso.' },
+  'start.step4Title': { pt: 'Conheça os produtos financeiros', en: 'Know the financial products', es: 'Conoce los productos financieros' },
+  'start.step4Desc': { pt: 'CDB, LCI, Tesouro Direto, ETFs — entenda cada produto e descubra qual faz mais sentido para você.', en: 'CDB, LCI, Treasury Bonds, ETFs — understand each product and discover which one suits you best.', es: 'CDB, LCI, Bonos del Tesoro, ETFs — entiende cada producto y descubre cuál te conviene más.' },
+  'start.explore': { pt: 'Explorar', en: 'Explore', es: 'Explorar' },
+  'start.startPath': { pt: 'Ver trilhas', en: 'View paths', es: 'Ver rutas' },
+  'start.instaCta': { pt: 'Me siga no Instagram', en: 'Follow me on Instagram', es: 'Sígueme en Instagram' },
+  'start.instaDesc': { pt: 'Conteúdo diário sobre finanças, investimentos e dicas práticas para sua vida financeira.', en: 'Daily content about finance, investments and practical tips for your financial life.', es: 'Contenido diario sobre finanzas, inversiones y consejos prácticos para tu vida financiera.' },
+  'start.followInsta': { pt: 'Seguir no Instagram', en: 'Follow on Instagram', es: 'Seguir en Instagram' },
+  'start.readBlog': { pt: 'Ler o blog', en: 'Read the blog', es: 'Leer el blog' },
+
+  // ─── Links Page ───
+  'links.bio': { pt: 'Educação financeira de um jeito simples', en: 'Financial education made simple', es: 'Educación financiera de forma simple' },
+  'links.startHere': { pt: 'Comece Aqui', en: 'Start Here', es: 'Empieza Aquí' },
+  'links.blog': { pt: 'Blog', en: 'Blog', es: 'Blog' },
+  'links.library': { pt: 'Biblioteca Financeira', en: 'Financial Library', es: 'Biblioteca Financiera' },
+  'links.learningPaths': { pt: 'Trilhas de Aprendizado', en: 'Learning Paths', es: 'Rutas de Aprendizaje' },
+  'links.contact': { pt: 'Contato', en: 'Contact', es: 'Contacto' },
+  'links.instagram': { pt: 'Instagram', en: 'Instagram', es: 'Instagram' },
+
+  // ─── Footer Social ───
+  'footer.followInsta': { pt: 'Seguir no Instagram', en: 'Follow on Instagram', es: 'Seguir en Instagram' },
+  'footer.social': { pt: 'Redes', en: 'Social', es: 'Redes' },
 } as const;
 
 export type TranslationKey = keyof typeof translations;

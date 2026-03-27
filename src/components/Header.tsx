@@ -15,11 +15,12 @@ const Header = () => {
 
   const navItems = [
     { label: t('nav.home'), path: "/" },
-    { label: t('nav.about'), path: "/about" },
+    { label: t('nav.startHere'), path: "/comece-aqui" },
     { label: t('nav.blog'), path: "/blog" },
     { label: t('nav.library'), path: "/library" },
     { label: t('nav.learning'), path: "/learning-paths" },
     { label: t('nav.projects'), path: "/projects" },
+    { label: t('nav.about'), path: "/about" },
     { label: t('nav.contact'), path: "/contact" },
   ];
 

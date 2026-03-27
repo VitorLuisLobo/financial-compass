@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Instagram } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const Footer = () => {
@@ -15,6 +16,15 @@ const Footer = () => {
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               {t('footer.desc')}
             </p>
+            <a
+              href="https://www.instagram.com/gabrodriguesm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+            >
+              <Instagram className="h-4 w-4" />
+              {t('footer.followInsta')}
+            </a>
           </div>
 
           <div className="flex gap-16">
@@ -22,6 +32,7 @@ const Footer = () => {
               <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground mb-4">{t('footer.navigate')}</h4>
               <div className="flex flex-col gap-3">
                 {[
+                  { label: t('nav.startHere'), path: "/comece-aqui" },
                   { label: t('footer.blog'), path: "/blog" },
                   { label: t('footer.library'), path: "/library" },
                   { label: t('footer.learningPaths'), path: "/learning-paths" },
@@ -42,8 +53,11 @@ const Footer = () => {
                 <Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t('footer.contact')}
                 </Link>
-                <a href="mailto:contact@financehub.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Email
+                <Link to="/links" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Link na Bio
+                </Link>
+                <a href="https://www.instagram.com/gabrodriguesm/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Instagram
                 </a>
               </div>
             </div>

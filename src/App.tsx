@@ -15,6 +15,8 @@ import Library from "./pages/Library";
 import LearningPaths from "./pages/LearningPaths";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import StartHere from "./pages/StartHere";
+import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 import GabiFAB from "./components/GabiFAB";
 

@@ -8,8 +8,11 @@ interface Message {
   error?: boolean;
 }
 
-const WELCOME_MESSAGE = `Oi! Sou a Gabi, assistente financeira do blog. 👋
-Pode me perguntar sobre investimentos, CDI, Selic, como montar uma carteira ou qualquer dúvida sobre finanças. Como posso te ajudar?`;
+const WELCOME_MESSAGE = `Oi! Eu sou a Gabi, sua mentora financeira aqui no site. 👋
+
+Estou aqui pra te ajudar a entender finanças sem complicação — do básico ao mais avançado, no seu ritmo. Pode perguntar qualquer coisa, não existe pergunta boba! 😊
+
+Como posso te ajudar hoje?`;
 
 const QUICK_PILLS = [
   'Como começar a investir?',

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { X, Send, RotateCcw } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Message {
@@ -8,8 +9,11 @@ interface Message {
   error?: boolean;
 }
 
-const WELCOME_MESSAGE = `Oi! Sou a Gabi, assistente financeira do blog. 👋
-Pode me perguntar sobre investimentos, CDI, Selic, como montar uma carteira ou qualquer dúvida sobre finanças. Como posso te ajudar?`;
+const WELCOME_MESSAGE = `Oi! Eu sou a Gabi, sua mentora financeira aqui no site. 👋
+
+Estou aqui pra te ajudar a entender finanças sem complicação — do básico ao mais avançado, no seu ritmo. Pode perguntar qualquer coisa, não existe pergunta boba! 😊
+
+Como posso te ajudar hoje?`;
 
 const QUICK_PILLS = [
   'Como começar a investir?',
@@ -181,7 +185,13 @@ export default function GabiChat({ onClose }: { onClose: () => void }) {
                   : { background: '#fff', border: '0.5px solid #EDEAE2', borderRadius: '12px 12px 12px 0' }
               }
             >
-              {msg.content}
+              {msg.role === 'assistant' ? (
+                <div className="prose prose-sm prose-stone max-w-none [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:mt-2 [&_h3]:mb-1 [&_p]:my-1 [&_ul]:my-1 [&_ol]:my-1 [&_li]:my-0.5 [&_hr]:my-2 [&_strong]:font-semibold">
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                </div>
+              ) : (
+                msg.content
+              )}
               {msg.error && (
                 <button
                   onClick={retryLast}

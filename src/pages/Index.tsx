@@ -1,21 +1,13 @@
 import SEOHead from "@/components/SEOHead";
 import HeroSection from "@/components/home/HeroSection";
-import FeaturedArticles from "@/components/home/FeaturedArticles";
-import LibrarySection from "@/components/home/LibrarySection";
-import LearningPathsSection from "@/components/home/LearningPathsSection";
-import ProjectsSection from "@/components/home/ProjectsSection";
-import NewsletterSection from "@/components/home/NewsletterSection";
+import MarketTicker from "@/components/home/MarketTicker";
 
 const Index = () => {
   return (
     <div>
       <SEOHead title="Home" description="Investment advisor sharing insights on finance, investing and financial education. Build knowledge that lasts." />
       <HeroSection />
-      <FeaturedArticles />
-      <LibrarySection />
-      <LearningPathsSection />
-      <ProjectsSection />
-      <NewsletterSection />
+      <MarketTicker />
     </div>
   );
 };

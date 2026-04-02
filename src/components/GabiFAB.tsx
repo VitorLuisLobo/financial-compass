@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import GabiChat from './GabiChat';
+import grLogo from '@/assets/gr-logo.png';
 
 export default function GabiFAB() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +22,9 @@ export default function GabiFAB() {
         <button
           onClick={() => setIsOpen(true)}
           title="Fale com a Gabi"
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142,71%,45%)] text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-card border border-border transition-transform hover:scale-105 active:scale-95"
         >
-          <MessageCircle className="h-6 w-6" />
+          <img src={grLogo} alt="Gabi" className="h-9 w-9 object-contain" />
         </button>
       )}
 

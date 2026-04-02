@@ -10,7 +10,7 @@ interface StockData {
   currency?: "BRL" | "USD";
 }
 
-const GLOBAL_SYMBOLS = "BTC,ETH,USDBRL,GC=F,CL=F";
+const GLOBAL_SYMBOLS = ["BTC", "ETH", "USDBRL", "GC=F", "CL=F"];
 
 const GLOBAL_META: Record<string, { name: string; category: string; currency: "BRL" | "USD" }> = {
   BTC: { name: "Bitcoin", category: "CRIPTO", currency: "USD" },
@@ -43,27 +43,33 @@ const MarketTicker = () => {
 
   const fetchStocks = useCallback(async () => {
     try {
+      // Fetch both in parallel; global may fail (demo token limitation)
       const [b3Res, globalRes] = await Promise.all([
         fetch("https://brapi.dev/api/quote/list?limit=7&sortBy=volume&sortOrder=desc&token=demo"),
-        fetch(`https://brapi.dev/api/quote/${GLOBAL_SYMBOLS}?token=demo`),
+        fetch(`https://brapi.dev/api/quote/${GLOBAL_SYMBOLS.join(",")}?token=demo`).catch(() => null),
       ]);
 
-      if (!b3Res.ok || !globalRes.ok) throw new Error("fetch failed");
+      if (!b3Res.ok) throw new Error("B3 fetch failed");
 
-      const [b3Json, globalJson] = await Promise.all([b3Res.json(), globalRes.json()]);
+      const b3Json = await b3Res.json();
 
-      const globalStocks: StockData[] = (globalJson.results ?? []).map((r: any) => {
-        const meta = GLOBAL_META[r.symbol] ?? { name: r.shortName ?? r.symbol, category: "GLOBAL", currency: "USD" };
-        return {
-          stock: r.symbol,
-          name: meta.name,
-          close: r.regularMarketPrice,
-          change: r.regularMarketChangePercent,
-          volume: r.regularMarketVolume ?? 0,
-          category: meta.category,
-          currency: meta.currency,
-        };
-      });
+      // Parse global data if available
+      let globalStocks: StockData[] = [];
+      if (globalRes && globalRes.ok) {
+        const globalJson = await globalRes.json();
+        globalStocks = (globalJson.results ?? []).map((r: any) => {
+          const meta = GLOBAL_META[r.symbol] ?? { name: r.shortName ?? r.symbol, category: "GLOBAL", currency: "USD" };
+          return {
+            stock: r.symbol,
+            name: meta.name,
+            close: r.regularMarketPrice,
+            change: r.regularMarketChangePercent,
+            volume: r.regularMarketVolume ?? 0,
+            category: meta.category,
+            currency: meta.currency,
+          };
+        });
+      }
 
       const b3Stocks: StockData[] = (b3Json.stocks ?? []).map((s: any) => ({
         stock: s.stock,
@@ -128,7 +134,7 @@ const MarketTicker = () => {
             </thead>
             <tbody>
               {loading && stocks.length === 0 ? (
-                Array.from({ length: 12 }).map((_, i) => (
+                Array.from({ length: 7 }).map((_, i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="py-3 px-4"><div className="h-4 w-6 bg-muted rounded animate-pulse" /></td>
                     <td className="py-3 px-4"><div className="h-4 w-16 bg-muted rounded animate-pulse" /></td>

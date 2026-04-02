@@ -6,12 +6,28 @@ interface StockData {
   close: number;
   change: number;
   volume: number;
+  category?: string;
+  currency?: "BRL" | "USD";
 }
 
-const formatCurrency = (value: number) =>
+const GLOBAL_SYMBOLS = "BTC,ETH,USDBRL,GC=F,CL=F";
+
+const GLOBAL_META: Record<string, { name: string; category: string; currency: "BRL" | "USD" }> = {
+  BTC: { name: "Bitcoin", category: "CRIPTO", currency: "USD" },
+  ETH: { name: "Ethereum", category: "CRIPTO", currency: "USD" },
+  USDBRL: { name: "Dólar Americano", category: "MOEDA", currency: "BRL" },
+  "GC=F": { name: "Ouro", category: "COMMODITY", currency: "USD" },
+  "CL=F": { name: "Petróleo WTI", category: "COMMODITY", currency: "USD" },
+};
+
+const formatBRL = (value: number) =>
   new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
 
+const formatUSD = (value: number) =>
+  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(value);
+
 const formatVolume = (value: number) => {
+  if (!value) return "—";
   if (value >= 1_000_000_000) return `${(value / 1_000_000_000).toFixed(1)}B`;
   if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
   if (value >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
@@ -27,20 +43,41 @@ const MarketTicker = () => {
 
   const fetchStocks = useCallback(async () => {
     try {
-      const res = await fetch(
-        "https://brapi.dev/api/quote/list?limit=10&sortBy=volume&sortOrder=desc&token=demo"
-      );
-      if (!res.ok) throw new Error("fetch failed");
-      const json = await res.json();
-      const results: StockData[] = (json.stocks ?? []).map((s: any) => ({
+      const [b3Res, globalRes] = await Promise.all([
+        fetch("https://brapi.dev/api/quote/list?limit=7&sortBy=volume&sortOrder=desc&token=demo"),
+        fetch(`https://brapi.dev/api/quote/${GLOBAL_SYMBOLS}?token=demo`),
+      ]);
+
+      if (!b3Res.ok || !globalRes.ok) throw new Error("fetch failed");
+
+      const [b3Json, globalJson] = await Promise.all([b3Res.json(), globalRes.json()]);
+
+      const globalStocks: StockData[] = (globalJson.results ?? []).map((r: any) => {
+        const meta = GLOBAL_META[r.symbol] ?? { name: r.shortName ?? r.symbol, category: "GLOBAL", currency: "USD" };
+        return {
+          stock: r.symbol,
+          name: meta.name,
+          close: r.regularMarketPrice,
+          change: r.regularMarketChangePercent,
+          volume: r.regularMarketVolume ?? 0,
+          category: meta.category,
+          currency: meta.currency,
+        };
+      });
+
+      const b3Stocks: StockData[] = (b3Json.stocks ?? []).map((s: any) => ({
         stock: s.stock,
         name: s.name,
         close: s.close,
         change: s.change,
         volume: s.volume,
+        category: undefined,
+        currency: "BRL" as const,
       }));
-      prevStocks.current = results;
-      setStocks(results);
+
+      const combined = [...globalStocks, ...b3Stocks];
+      prevStocks.current = combined;
+      setStocks(combined);
       setLastUpdate(new Date());
       setError(false);
     } catch {
@@ -62,7 +99,6 @@ const MarketTicker = () => {
   return (
     <section className="py-16 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="relative flex items-center gap-2">
             <span className="relative flex h-2.5 w-2.5">
@@ -78,7 +114,6 @@ const MarketTicker = () => {
           )}
         </div>
 
-        {/* Table */}
         <div className="overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
             <thead>
@@ -93,7 +128,7 @@ const MarketTicker = () => {
             </thead>
             <tbody>
               {loading && stocks.length === 0 ? (
-                Array.from({ length: 10 }).map((_, i) => (
+                Array.from({ length: 12 }).map((_, i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="py-3 px-4"><div className="h-4 w-6 bg-muted rounded animate-pulse" /></td>
                     <td className="py-3 px-4"><div className="h-4 w-16 bg-muted rounded animate-pulse" /></td>
@@ -106,19 +141,27 @@ const MarketTicker = () => {
               ) : (
                 stocks.map((s, i) => {
                   const positive = s.change >= 0;
+                  const price = s.currency === "USD" ? formatUSD(s.close) : formatBRL(s.close);
                   return (
                     <tr key={s.stock} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
                       <td className="py-3 px-4 font-body text-muted-foreground tabular-nums">
                         {i + 1}
                       </td>
                       <td className="py-3 px-4 font-body font-medium text-foreground">
-                        {s.stock}
+                        <span className="flex items-center gap-2">
+                          {s.stock}
+                          {s.category && (
+                            <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                              {s.category}
+                            </span>
+                          )}
+                        </span>
                       </td>
                       <td className="py-3 px-4 font-body text-muted-foreground text-sm hidden sm:table-cell truncate max-w-[200px]">
                         {s.name}
                       </td>
                       <td className="py-3 px-4 text-right font-body text-foreground tabular-nums">
-                        {formatCurrency(s.close)}
+                        {price}
                       </td>
                       <td className={`py-3 px-4 text-right font-body font-medium tabular-nums ${positive ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
                         {positive ? "+" : ""}

@@ -125,9 +125,9 @@ export default function GabiChat({ onClose }: { onClose: () => void }) {
     <div className="flex h-full w-full flex-col overflow-hidden rounded-none md:rounded-2xl" style={{ fontFamily: "'Manrope', sans-serif" }}>
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3" style={{ background: '#1C1917' }}>
-        <div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-[hsl(142,71%,45%)] text-sm font-bold text-white">
-          G
-          <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#1C1917] bg-[hsl(142,71%,45%)]" style={{ animation: 'pulse 2s infinite' }} />
+        <div className="relative flex h-9 w-9 items-center justify-center rounded-full overflow-hidden bg-[#1C1917]">
+          <img src={grLogo} alt="Gabi" className="h-8 w-8 object-contain" />
+          <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#1C1917] bg-accent" style={{ animation: 'pulse 2s infinite' }} />
         </div>
         <div className="flex-1">
           <p className="text-sm font-semibold text-white">Gabi</p>

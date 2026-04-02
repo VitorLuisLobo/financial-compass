@@ -6,55 +6,55 @@
 
 @layer base {
   :root {
-    --background: 220 30% 7%;
-    --foreground: 210 40% 97%;
+    --background: 40 20% 97%;
+    --foreground: 30 10% 10%;
 
-    --card: 220 26% 10%;
-    --card-foreground: 210 40% 97%;
+    --card: 40 18% 93%;
+    --card-foreground: 30 10% 10%;
 
-    --popover: 220 26% 10%;
-    --popover-foreground: 210 40% 97%;
+    --popover: 40 18% 93%;
+    --popover-foreground: 30 10% 10%;
 
-    --primary: 142 71% 45%;
-    --primary-foreground: 220 30% 7%;
+    --primary: 42 52% 55%;
+    --primary-foreground: 40 20% 97%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 40% 80%;
+    --secondary: 38 14% 90%;
+    --secondary-foreground: 30 10% 10%;
 
-    --muted: 220 20% 14%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 38 14% 90%;
+    --muted-foreground: 30 5% 42%;
 
-    --accent: 142 71% 45%;
-    --accent-foreground: 220 30% 7%;
+    --accent: 42 52% 55%;
+    --accent-foreground: 30 10% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 20% 97%;
 
-    --border: 220 16% 16%;
-    --input: 220 16% 16%;
-    --ring: 142 71% 45%;
+    --border: 38 15% 82%;
+    --input: 38 15% 82%;
+    --ring: 42 52% 55%;
 
     --radius: 0.75rem;
 
-    --gold: 43 74% 52%;
+    --gold: 42 52% 55%;
 
-    --sidebar-background: 220 30% 7%;
-    --sidebar-foreground: 210 40% 97%;
-    --sidebar-primary: 142 71% 45%;
-    --sidebar-primary-foreground: 220 30% 7%;
-    --sidebar-accent: 220 20% 14%;
-    --sidebar-accent-foreground: 210 40% 97%;
-    --sidebar-border: 220 16% 16%;
-    --sidebar-ring: 142 71% 45%;
+    --sidebar-background: 40 20% 97%;
+    --sidebar-foreground: 30 10% 10%;
+    --sidebar-primary: 42 52% 55%;
+    --sidebar-primary-foreground: 40 20% 97%;
+    --sidebar-accent: 38 14% 90%;
+    --sidebar-accent-foreground: 30 10% 10%;
+    --sidebar-border: 38 15% 82%;
+    --sidebar-ring: 42 52% 55%;
 
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Geist', sans-serif;
 
-    --surface-elevated: 220 26% 12%;
-    --surface-subtle: 220 26% 9%;
+    --surface-elevated: 40 18% 93%;
+    --surface-subtle: 40 20% 97%;
 
-    --gradient-start: 142 71% 45%;
-    --gradient-end: 224 76% 48%;
+    --gradient-start: 42 52% 55%;
+    --gradient-end: 42 40% 45%;
   }
 
   .dark {

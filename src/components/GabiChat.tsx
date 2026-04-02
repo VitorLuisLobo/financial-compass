@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { X, Send, RotateCcw } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { supabase } from '@/integrations/supabase/client';
+import grLogo from '@/assets/gr-logo.png';
 
 interface Message {
   role: 'user' | 'assistant';

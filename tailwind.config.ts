@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["DM Serif Display", "serif"],
-        body: ["Manrope", "sans-serif"],
+        display: ["Cormorant Garamond", "serif"],
+        body: ["Geist", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

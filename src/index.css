@@ -85,30 +85,30 @@
   }
 
   .light {
-    --background: 220 20% 96%;
-    --foreground: 220 26% 14%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 26% 14%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 26% 14%;
-    --primary: 142 71% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 90%;
-    --secondary-foreground: 220 20% 30%;
-    --muted: 220 14% 92%;
-    --muted-foreground: 220 10% 42%;
-    --accent: 142 71% 40%;
-    --accent-foreground: 0 0% 100%;
+    --background: 40 20% 97%;
+    --foreground: 30 10% 10%;
+    --card: 40 18% 93%;
+    --card-foreground: 30 10% 10%;
+    --popover: 40 18% 93%;
+    --popover-foreground: 30 10% 10%;
+    --primary: 42 52% 55%;
+    --primary-foreground: 40 20% 97%;
+    --secondary: 38 14% 90%;
+    --secondary-foreground: 30 10% 10%;
+    --muted: 38 14% 90%;
+    --muted-foreground: 30 5% 42%;
+    --accent: 42 52% 55%;
+    --accent-foreground: 30 10% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 14% 88%;
-    --input: 220 14% 88%;
-    --ring: 142 71% 40%;
-    --surface-elevated: 0 0% 100%;
-    --surface-subtle: 220 20% 97%;
-    --gradient-start: 142 71% 40%;
-    --gradient-end: 224 76% 48%;
-    --gold: 43 74% 49%;
+    --destructive-foreground: 40 20% 97%;
+    --border: 38 15% 82%;
+    --input: 38 15% 82%;
+    --ring: 42 52% 55%;
+    --surface-elevated: 40 18% 93%;
+    --surface-subtle: 40 20% 97%;
+    --gradient-start: 42 52% 55%;
+    --gradient-end: 42 40% 45%;
+    --gold: 42 52% 55%;
   }
 }
 
